@@ -36,7 +36,7 @@ const closedMixin = (theme: Theme): CSSObject => ({
     duration: theme.transitions.duration.leavingScreen,
   }),
   overflowX: 'hidden',
-  width: `calc(${theme.spacing(7)} + 1px)`,
+  width: `calc(${theme.spacing(8)} + 1px)`,
   [theme.breakpoints.up('sm')]: {
     width: `calc(${theme.spacing(8)} + 1px)`,
   },
@@ -118,31 +118,38 @@ export default function Sidebar() {
   const renderLinks = useCallback(() => {
     return SidebarLinks.map((link) => (
       <Link key={link.title} href={link.href}>
-        <ListItem disablePadding sx={{ display: 'block' }}>
-          <ListItemButton
+        <ListItemButton
+          sx={{
+            mx: 0.5,
+            maxHeight: 48,
+            justifyContent: open ? 'flex-start' : 'center',
+            borderRadius: 24,
+            color: link.colour,
+            '&:hover': {
+              bgcolor: link.colour,
+              color: 'white',
+            },
+          }}
+        >
+          <ListItemIcon
             sx={{
-              minHeight: 48,
-              justifyContent: open ? 'initial' : 'center',
-              px: 2.5,
+              minWidth: 0,
+              mr: open ? 3 : 'auto',
+              justifyContent: 'center',
+              color: 'inherit',
             }}
           >
-            <ListItemIcon
-              sx={{
-                minWidth: 0,
-                mr: open ? 3 : 'auto',
-                justifyContent: 'center',
-                color: link.colour,
-              }}
-            >
-              {link.icon}
-            </ListItemIcon>
-            <ListItemText
-              primary={link.title}
-              primaryTypographyProps={{ color: link.colour, fontWeight: 'bold' }}
-              sx={{ opacity: open ? 1 : 0 }}
-            />
-          </ListItemButton>
-        </ListItem>
+            {link.icon}
+          </ListItemIcon>
+          <ListItemText
+            primary={link.title}
+            primaryTypographyProps={{
+              color: 'inherit',
+              fontWeight: 'bold',
+            }}
+            sx={{ opacity: open ? 1 : 0 }}
+          />
+        </ListItemButton>
       </Link>
     ));
   }, [open]);
@@ -162,7 +169,7 @@ export default function Sidebar() {
           )}
         </DrawerHeader>
         <Divider />
-        <Stack gap={3} height="100%">
+        <Stack gap={3} height="100%" mt={2}>
           {renderLinks()}
         </Stack>
       </CustomDrawer>
