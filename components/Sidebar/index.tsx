@@ -67,7 +67,7 @@ const SidebarLinks: SidebarLinkData[] = [
     icon: <DataArrayIcon />,
     title: 'Data Structures',
     colour: green[500],
-    href: '/data-structures',
+    href: '/datastructures',
   },
   {
     icon: <SortIcon />,
@@ -89,32 +89,32 @@ const SidebarLinks: SidebarLinkData[] = [
   },
 ];
 
-export default function Sidebar() {
+export default function Sidebar({ children }: { children?: ReactNode }) {
   const theme = useTheme();
   const router = useRouter();
-  const [open, setOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleDrawerOpen = () => {
-    setOpen(true);
+    setIsOpen(true);
   };
 
   const handleDrawerClose = () => {
-    setOpen(false);
+    setIsOpen(false);
   };
 
   const renderLinks = useCallback((): ReactNode => {
     return SidebarLinks.map((link) => {
       const isActive = router.asPath.includes(link.href);
 
-      return <SidebarLink key={link.href} link={link} isOpen={open} isActive={isActive} />;
+      return <SidebarLink key={link.href} link={link} isOpen={isOpen} isActive={isActive} />;
     });
-  }, [open, router.asPath]);
+  }, [isOpen, router.asPath]);
 
   return (
     <Box>
-      <CustomDrawer variant="permanent" open={open}>
-        <DrawerHeader sx={{ justifyContent: open ? 'flex-end' : 'center' }}>
-          {open ? (
+      <CustomDrawer variant="permanent" open={isOpen}>
+        <DrawerHeader sx={{ justifyContent: isOpen ? 'flex-end' : 'center' }}>
+          {isOpen ? (
             <IconButton onClick={handleDrawerClose} title="Collapse sidebar">
               {theme.direction === 'rtl' ? <ChevronRightIcon fontSize="large" /> : <ChevronLeftIcon fontSize="large" />}
             </IconButton>
@@ -129,6 +129,7 @@ export default function Sidebar() {
           {renderLinks()}
         </Stack>
       </CustomDrawer>
+      {children}
     </Box>
   );
 }
