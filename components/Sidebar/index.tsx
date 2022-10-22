@@ -116,11 +116,11 @@ export default function Sidebar() {
         <DrawerHeader sx={{ justifyContent: open ? 'flex-end' : 'center' }}>
           {open ? (
             <IconButton onClick={handleDrawerClose} title="Collapse sidebar">
-              {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+              {theme.direction === 'rtl' ? <ChevronRightIcon fontSize="large" /> : <ChevronLeftIcon fontSize="large" />}
             </IconButton>
           ) : (
             <IconButton onClick={handleDrawerOpen} title="Expand sidebar">
-              <MenuIcon />
+              <ChevronRightIcon fontSize="large" />
             </IconButton>
           )}
         </DrawerHeader>
