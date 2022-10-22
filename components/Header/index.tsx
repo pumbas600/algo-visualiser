@@ -9,7 +9,13 @@ export default function Header({ currentPage }: { currentPage: number }) {
                 <Toolbar sx={{ justifyContent: "space-between" }}>
                     <div />
                     {currentPage === 0 ? (
-                        <Button color="inherit">Data Structures</Button>
+                        <Box>
+                            <Button color="inherit" sx={{ marginRight: "30px"}}>Stack</Button>
+                            <Button color="inherit" sx={{ marginRight: "30px"}}>Queue</Button>
+                            <Button color="inherit" sx={{ marginRight: "32px"}}>Linked List</Button>
+                            <Button color="inherit" sx={{ marginRight: "30px"}}>Binary Heap</Button>
+                            <Button color="inherit">Graph</Button>
+                        </Box>
                     ) : currentPage === 1 ? (
                         <Button color="inherit">Sorting</Button>
                     ) : currentPage === 2 ? (
