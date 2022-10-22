@@ -28,7 +28,7 @@ const SidebarLink = ({ link, isActive, isOpen }: SidebarLinkProps) => {
   }, [isActive, link.colour]);
 
   return (
-    <Link key={link.title} href={link.href}>
+    <Link key={link.title} href={isActive ? '/' : link.href}>
       <ListItemButton
         sx={{
           mx: 0.5,
