@@ -125,7 +125,7 @@ export default function Sidebar() {
           )}
         </DrawerHeader>
         <Divider />
-        <Stack gap={3} height="100%" mt={2}>
+        <Stack gap={3} mt={2}>
           {renderLinks()}
         </Stack>
       </CustomDrawer>
