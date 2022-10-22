@@ -7,17 +7,14 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import DataArrayIcon from '@mui/icons-material/DataArray';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
 import SearchIcon from '@mui/icons-material/Search';
 import SortIcon from '@mui/icons-material/Sort';
 import TimelineIcon from '@mui/icons-material/Timeline';
 import { ReactNode, useCallback, useState } from 'react';
 import { Stack } from '@mui/material';
-import Link from 'next/link';
 import { blue, green, purple, red } from '@mui/material/colors';
+import { useRouter } from 'next/router';
+import SidebarLink, { SidebarLinkData } from './SidebarLink';
 
 const drawerWidth = 240;
 
@@ -65,18 +62,7 @@ const CustomDrawer = styled(Drawer, { shouldForwardProp: (prop) => prop !== 'ope
   }),
 }));
 
-export interface SidebarLink {
-  icon?: ReactNode;
-  href: string;
-  title: string;
-  colour: string;
-}
-
-export interface SidebarProps {
-  links: SidebarLink[];
-}
-
-const SidebarLinks: SidebarLink[] = [
+const SidebarLinks: SidebarLinkData[] = [
   {
     icon: <DataArrayIcon />,
     title: 'Data Structures',
@@ -105,6 +91,7 @@ const SidebarLinks: SidebarLink[] = [
 
 export default function Sidebar() {
   const theme = useTheme();
+  const router = useRouter();
   const [open, setOpen] = useState(false);
 
   const handleDrawerOpen = () => {
@@ -115,44 +102,13 @@ export default function Sidebar() {
     setOpen(false);
   };
 
-  const renderLinks = useCallback(() => {
-    return SidebarLinks.map((link) => (
-      <Link key={link.title} href={link.href}>
-        <ListItemButton
-          sx={{
-            mx: 0.5,
-            maxHeight: 48,
-            justifyContent: open ? 'flex-start' : 'center',
-            borderRadius: 24,
-            color: link.colour,
-            '&:hover': {
-              bgcolor: link.colour,
-              color: 'white',
-            },
-          }}
-        >
-          <ListItemIcon
-            sx={{
-              minWidth: 0,
-              mr: open ? 3 : 'auto',
-              justifyContent: 'center',
-              color: 'inherit',
-            }}
-          >
-            {link.icon}
-          </ListItemIcon>
-          <ListItemText
-            primary={link.title}
-            primaryTypographyProps={{
-              color: 'inherit',
-              fontWeight: 'bold',
-            }}
-            sx={{ opacity: open ? 1 : 0 }}
-          />
-        </ListItemButton>
-      </Link>
-    ));
-  }, [open]);
+  const renderLinks = useCallback((): ReactNode => {
+    return SidebarLinks.map((link) => {
+      const isActive = router.asPath.includes(link.href);
+
+      return <SidebarLink key={link.href} link={link} isOpen={open} isActive={isActive} />;
+    });
+  }, [open, router.asPath]);
 
   return (
     <Box>
