@@ -1,8 +1,10 @@
 import { Box } from '@mui/material';
+import Header from '../../components/Header';
 
 const Searching = () => {
   return (
-    <Box ml="200px" color="white">
+    <Box>
+      <Header currentPage={2} />
       Hi!
     </Box>
   );

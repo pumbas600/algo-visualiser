@@ -1,8 +1,10 @@
 import { Box } from '@mui/material';
+import Header from '../../components/Header';
 
 const GraphTraversal = () => {
   return (
-    <Box ml="200px" color="white">
+    <Box>
+      <Header currentPage={3} />
       Hi!
     </Box>
   );
