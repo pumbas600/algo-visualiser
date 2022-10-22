@@ -1,10 +1,15 @@
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
+import ContentLayout from '../../components/ContentLayout';
+import Heading from '../../components/ContentLayout/Heading';
 
 const DataStructures = () => {
   return (
-    <Box ml="200px" color="white">
+    <ContentLayout>
+      <Heading title="This is a heading" />
       Hi!
-    </Box>
+      <Box>Another child</Box>
+      <Heading title={'This is a subheading'} subHeading />
+    </ContentLayout>
   );
 };
 
