@@ -85,7 +85,7 @@ const SidebarLinks: SidebarLinkData[] = [
     icon: <TimelineIcon />,
     title: 'Graph Traversal',
     colour: red[500],
-    href: '/graph-traversal',
+    href: '/graphtraversal',
   },
 ];
 
