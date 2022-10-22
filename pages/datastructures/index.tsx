@@ -2,7 +2,7 @@ import { Box } from '@mui/material';
 
 const DataStructures = () => {
   return (
-    <Box ml="200px" color="white">
+    <Box>
       Hi!
     </Box>
   );
