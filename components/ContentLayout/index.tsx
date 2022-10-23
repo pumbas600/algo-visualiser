@@ -105,7 +105,7 @@ const ContentLayout = ({ children }: { children?: ReactNode }) => {
 
     return (
       <List
-        sx={{ position: 'fixed', top: '32px', right: '64px', width: '200px' }}
+        sx={{ position: 'fixed', top: '32px', right: '64px', width: '200px', display: { md: 'block', xs: 'none' } }}
         subheader={
           <Typography fontFamily="monospace" fontWeight="bold" color={grey[500]} mb={1} pl={2}>
             CONTENTS
@@ -118,8 +118,8 @@ const ContentLayout = ({ children }: { children?: ReactNode }) => {
   }, [getChildHeadings, renderHeading]);
 
   return (
-    <Box display="flex" flexDirection="row" ml={8} my={4}>
-      <Stack spacing={1} width="100%" mr="264px" pr={2}>
+    <Box display="flex" flexDirection="row" my={4}>
+      <Stack spacing={1} width="100%" mr={{ xs: 0, md: '264px' }} px={8}>
         {renderChildren()}
       </Stack>
       {renderContents()}
