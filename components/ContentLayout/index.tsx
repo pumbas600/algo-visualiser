@@ -122,6 +122,7 @@ const ContentLayout = ({ children }: { children?: ReactNode }) => {
 
     return (
       <List
+        sx={{ position: 'fixed', top: '32px', right: '64px' }}
         subheader={
           <Typography fontFamily="monospace" fontWeight="bold" color={grey[500]} mb={1} pl={2}>
             CONTENTS
