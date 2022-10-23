@@ -2,7 +2,7 @@ import { Box, CSSObject, List, Stack, Typography } from '@mui/material';
 import { blue, grey } from '@mui/material/colors';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { Children, cloneElement, ReactNode, useCallback, useEffect } from 'react';
+import React, { Children, cloneElement, ReactNode, useCallback, useEffect, useState } from 'react';
 import { getChildren, isComponent } from '../Utilities';
 import Heading, { HeadingProps } from './Heading';
 
@@ -14,7 +14,6 @@ interface HeadingGroup {
 const typographyStyle: CSSObject = {
   cursor: 'pointer',
   borderLeft: `1px solid transparent`,
-  pl: 2,
   '&:hover': {
     color: grey[500],
     borderColor: grey[500],
@@ -27,10 +26,18 @@ const activeTypographyStyle: CSSObject = {
 };
 
 const ContentLayout = ({ children }: { children?: ReactNode }) => {
-  const router = useRouter();
+  const [currentId, setCurrentId] = useState('');
 
   useEffect(() => {
-    const handleScroll = (event: Event) => console.log(event);
+    const handleScroll = () => {
+      const hash = window.location.hash;
+      console.log(hash);
+      if (hash.length === 0) {
+        setCurrentId(hash);
+      } else {
+        setCurrentId(hash.substring(1));
+      }
+    };
 
     window.addEventListener('scroll', handleScroll);
 
@@ -62,71 +69,28 @@ const ContentLayout = ({ children }: { children?: ReactNode }) => {
       .map((c) => c.props as HeadingProps);
   }, [children]);
 
-  const isGroupNotEmpty = useCallback((group: HeadingGroup): boolean => {
-    return group.heading !== null || group.subHeadings.length !== 0;
-  }, []);
+  const renderHeading = useCallback(
+    (heading: HeadingProps) => {
+      const id = getId(heading);
+      const inSection = id === currentId;
 
-  const getHeadingGroups = useCallback((): HeadingGroup[] => {
-    const headings = getChildHeadings();
-    const groups: HeadingGroup[] = [];
-    const newEmptyGroup = () => ({
-      heading: null,
-      subHeadings: [],
-    });
+      const styles = {
+        ...typographyStyle,
+        ...(inSection ? activeTypographyStyle : {}),
+        pl: heading.subHeading ? 4 : 2,
+      };
 
-    let currentGroup: HeadingGroup = newEmptyGroup();
-
-    headings.forEach((heading) => {
-      if (heading.subHeading) {
-        currentGroup.subHeadings.push(heading);
-      } else {
-        if (isGroupNotEmpty(currentGroup)) {
-          groups.push(currentGroup);
-          currentGroup = newEmptyGroup();
-        }
-        currentGroup.heading = heading;
-      }
-    });
-    if (isGroupNotEmpty(currentGroup)) {
-      groups.push(currentGroup);
-    }
-
-    return groups;
-  }, [getChildHeadings, isGroupNotEmpty]);
-
-  const renderSubHeadings = useCallback(
-    (subHeadings: HeadingProps[]) => {
-      return subHeadings.map((heading) => {
-        const id = getId(heading);
-
-        return (
-          <Typography key={id} sx={{ ...typographyStyle, pl: 4 }} onClick={() => scrollIntoView(id)}>
-            {heading.title}
-          </Typography>
-        );
-      });
-    },
-    [getId, scrollIntoView],
-  );
-
-  const renderHeadingGroup = useCallback(
-    (group: HeadingGroup, index: number): ReactNode => {
       return (
-        <Box key={index} width="200px">
-          {group.heading !== null && (
-            <Typography sx={typographyStyle} onClick={() => scrollIntoView(getId(group.heading))}>
-              {group.heading.title}
-            </Typography>
-          )}
-          {group.subHeadings.length !== 0 && <List>{renderSubHeadings(group.subHeadings)}</List>}
-        </Box>
+        <Typography key={id} sx={styles} onClick={() => scrollIntoView(id)}>
+          {heading.title}
+        </Typography>
       );
     },
-    [getId, renderSubHeadings, scrollIntoView],
+    [getId, currentId, scrollIntoView],
   );
 
   const renderContents = useCallback((): ReactNode => {
-    const groups = getHeadingGroups();
+    const headings = getChildHeadings();
 
     return (
       <List
@@ -137,10 +101,10 @@ const ContentLayout = ({ children }: { children?: ReactNode }) => {
           </Typography>
         }
       >
-        {groups.map((group, index) => renderHeadingGroup(group, index))}
+        {headings.map(renderHeading)}
       </List>
     );
-  }, [getHeadingGroups, renderHeadingGroup]);
+  }, [getChildHeadings, renderHeading]);
 
   return (
     <Box display="flex" flexDirection="row" mx={8} my={4} gap={2} justifyContent="space-between">
