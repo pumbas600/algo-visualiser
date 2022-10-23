@@ -1,18 +1,13 @@
 import { Box, CSSObject, List, Stack, Typography } from '@mui/material';
 import { blue, grey } from '@mui/material/colors';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
 import React, { Children, cloneElement, ReactNode, useCallback, useEffect, useState } from 'react';
 import { getChildren, isComponent } from '../Utilities';
 import Heading, { HeadingProps } from './Heading';
 
-interface HeadingGroup {
-  heading: HeadingProps | null;
-  subHeadings: HeadingProps[];
-}
-
 const typographyStyle: CSSObject = {
+  fontSize: '0.9rem',
   cursor: 'pointer',
+  mb: 0.5,
   borderLeft: `1px solid transparent`,
   '&:hover': {
     color: grey[500],
@@ -28,46 +23,60 @@ const activeTypographyStyle: CSSObject = {
 const ContentLayout = ({ children }: { children?: ReactNode }) => {
   const [currentId, setCurrentId] = useState('');
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const hash = window.location.hash;
-      console.log(hash);
-      if (hash.length === 0) {
-        setCurrentId(hash);
-      } else {
-        setCurrentId(hash.substring(1));
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   const getId = useCallback((props: HeadingProps): string => {
     return props.id ?? props.title.replaceAll(/\s+/g, '-').toLowerCase();
   }, []);
-
-  const scrollIntoView = useCallback((id: string) => {
-    document.getElementById(id)?.scrollIntoView();
-  }, []);
-
-  const renderChildren = useCallback((): ReactNode => {
-    return Children.map(children, (c) => {
-      if (isComponent(Heading, c) && !c.props.id) {
-        const id = getId(c.props);
-        return cloneElement(c, { ...c.props, id });
-      }
-
-      return c;
-    });
-  }, [children, getId]);
 
   const getChildHeadings = useCallback((): HeadingProps[] => {
     return getChildren(children)
       .filter((c) => c.type === Heading)
       .map((c) => c.props as HeadingProps);
   }, [children]);
+
+  const determineCurrentHeaderId = useCallback(() => {
+    const viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
+
+    for (const id of getChildHeadings().map(getId)) {
+      const element = document.getElementById(id);
+      if (!element) continue;
+
+      const rect = element.getBoundingClientRect();
+      if (rect.bottom >= 0 && rect.top - viewHeight < 0) {
+        setCurrentId(id);
+        return;
+      }
+    }
+
+    setCurrentId('');
+  }, [getChildHeadings, getId]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      determineCurrentHeaderId();
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [determineCurrentHeaderId]);
+
+  const scrollIntoView = useCallback((id: string) => {
+    document.getElementById(id)?.scrollIntoView();
+  }, []);
+
+  const renderChildren = useCallback((): ReactNode => {
+    const allIds: string[] = [];
+
+    const renderedChildren = Children.map(children, (c) => {
+      if (isComponent(Heading, c) && !c.props.id) {
+        const id = getId(c.props);
+        allIds.push(id);
+        return cloneElement(c, { ...c.props, id });
+      }
+      return c;
+    });
+    return renderedChildren;
+  }, [children, getId]);
 
   const renderHeading = useCallback(
     (heading: HeadingProps) => {
