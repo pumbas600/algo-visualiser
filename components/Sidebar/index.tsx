@@ -3,7 +3,6 @@ import Drawer from '@mui/material/Drawer';
 import { CSSObject, styled, Theme, useTheme } from '@mui/material/styles';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import DataArrayIcon from '@mui/icons-material/DataArray';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
@@ -104,11 +103,11 @@ export default function Sidebar({ children }: { children?: ReactNode }) {
 
   const renderLinks = useCallback((): ReactNode => {
     return SidebarLinks.map((link) => {
-      const isActive = router.asPath.includes(link.href);
+      const isActive = router.pathname.includes(link.href);
 
       return <SidebarLink key={link.href} link={link} isOpen={isOpen} isActive={isActive} />;
     });
-  }, [isOpen, router.asPath]);
+  }, [isOpen, router.pathname]);
 
   return (
     <Box>

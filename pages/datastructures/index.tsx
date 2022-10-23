@@ -7,8 +7,10 @@ const DataStructures = () => {
     <ContentLayout>
       <Heading title="This is a heading" />
       Hi!
-      <Box>Another child</Box>
+      <Box height="600px">Another child</Box>
       <Heading title={'This is a subheading'} subHeading />
+      <Box height="600px" />
+      <Heading title={'One more subheading'} subHeading />
     </ContentLayout>
   );
 };
