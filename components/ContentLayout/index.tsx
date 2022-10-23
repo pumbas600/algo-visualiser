@@ -30,11 +30,19 @@ const ContentLayout = ({ children }: { children?: ReactNode }) => {
   const router = useRouter();
 
   useEffect(() => {
-    console.log(window.location.pathname + window.location.hash);
+    const handleScroll = (event: Event) => console.log(event);
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const getId = useCallback((props: HeadingProps): string => {
     return props.id ?? props.title.replaceAll(/\s+/g, '-').toLowerCase();
+  }, []);
+
+  const scrollIntoView = useCallback((id: string) => {
+    document.getElementById(id)?.scrollIntoView();
   }, []);
 
   const renderChildren = useCallback((): ReactNode => {
@@ -54,37 +62,37 @@ const ContentLayout = ({ children }: { children?: ReactNode }) => {
       .map((c) => c.props as HeadingProps);
   }, [children]);
 
-  const isEmptyGroup = useCallback((group: HeadingGroup): boolean => {
+  const isGroupNotEmpty = useCallback((group: HeadingGroup): boolean => {
     return group.heading !== null || group.subHeadings.length !== 0;
   }, []);
 
   const getHeadingGroups = useCallback((): HeadingGroup[] => {
     const headings = getChildHeadings();
     const groups: HeadingGroup[] = [];
-    const emptyGroup = {
+    const newEmptyGroup = () => ({
       heading: null,
       subHeadings: [],
-    };
+    });
 
-    let currentGroup: HeadingGroup = emptyGroup;
+    let currentGroup: HeadingGroup = newEmptyGroup();
 
     headings.forEach((heading) => {
       if (heading.subHeading) {
         currentGroup.subHeadings.push(heading);
       } else {
-        if (!isEmptyGroup(currentGroup)) {
+        if (isGroupNotEmpty(currentGroup)) {
           groups.push(currentGroup);
-          currentGroup = emptyGroup;
+          currentGroup = newEmptyGroup();
         }
         currentGroup.heading = heading;
       }
     });
-    if (!isEmptyGroup(currentGroup)) {
+    if (isGroupNotEmpty(currentGroup)) {
       groups.push(currentGroup);
     }
 
     return groups;
-  }, [getChildHeadings, isEmptyGroup]);
+  }, [getChildHeadings, isGroupNotEmpty]);
 
   const renderSubHeadings = useCallback(
     (subHeadings: HeadingProps[]) => {
@@ -92,29 +100,29 @@ const ContentLayout = ({ children }: { children?: ReactNode }) => {
         const id = getId(heading);
 
         return (
-          <Link key={id} href={`${router.pathname}/#${id}`}>
-            <Typography sx={{ ...typographyStyle, pl: 4 }}>{heading.title}</Typography>
-          </Link>
+          <Typography key={id} sx={{ ...typographyStyle, pl: 4 }} onClick={() => scrollIntoView(id)}>
+            {heading.title}
+          </Typography>
         );
       });
     },
-    [getId, router.pathname],
+    [getId, scrollIntoView],
   );
 
   const renderHeadingGroup = useCallback(
     (group: HeadingGroup, index: number): ReactNode => {
       return (
         <Box key={index} width="200px">
-          {group.heading && (
-            <Link href={`${router.pathname}/#${getId(group.heading)}`}>
-              <Typography sx={typographyStyle}>{group.heading.title}</Typography>
-            </Link>
+          {group.heading !== null && (
+            <Typography sx={typographyStyle} onClick={() => scrollIntoView(getId(group.heading))}>
+              {group.heading.title}
+            </Typography>
           )}
           {group.subHeadings.length !== 0 && <List>{renderSubHeadings(group.subHeadings)}</List>}
         </Box>
       );
     },
-    [router.pathname, getId, renderSubHeadings],
+    [getId, renderSubHeadings, scrollIntoView],
   );
 
   const renderContents = useCallback((): ReactNode => {

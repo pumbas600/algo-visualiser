@@ -8,7 +8,7 @@ export interface HeadingProps {
 
 const Heading = ({ title, subHeading, id }: HeadingProps) => {
   return (
-    <Typography id={id} variant={subHeading ? 'h5' : 'h4'} fontWeight={subHeading ? undefined : 'bold'}>
+    <Typography id={id} variant={subHeading ? 'h5' : 'h4'} fontWeight={subHeading ? undefined : 'bold'} pt={1}>
       {title}
     </Typography>
   );
