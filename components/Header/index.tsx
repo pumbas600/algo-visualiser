@@ -2,7 +2,6 @@ import { AppBar, Box, Button, Toolbar } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 
 export default function Header({ currentPage }: { currentPage: number }) {
-    const theme = useTheme();
     return (
         <Box>
             <AppBar position="static">
@@ -17,11 +16,31 @@ export default function Header({ currentPage }: { currentPage: number }) {
                             <Button color="inherit">Graph</Button>
                         </Box>
                     ) : currentPage === 1 ? (
-                        <Button color="inherit">Sorting</Button>
+                        <Box>
+                            <Button color="inherit" sx={{ marginRight: "30px"}}>Selection Sort</Button>
+                            <Button color="inherit" sx={{ marginRight: "30px"}}>Insertion Sort</Button>
+                            <Button color="inherit" sx={{ marginRight: "32px"}}>Shell Sort</Button>
+                            <Button color="inherit" sx={{ marginRight: "30px"}}>Mergesort</Button>
+                            <Button color="inherit" sx={{ marginRight: "30px"}}>Quicksort</Button>
+                            <Button color="inherit" sx={{ marginRight: "30px"}}>Topological Sort</Button>
+                            <Button color="inherit">Heapsort</Button>
+                        </Box>
                     ) : currentPage === 2 ? (
-                        <Button color="inherit">Searching</Button>
+                        <Box>
+                            <Button color="inherit" sx={{ marginRight: "30px"}}>Quickselect</Button>
+                            <Button color="inherit" sx={{ marginRight: "30px"}}>DFS</Button>
+                            <Button color="inherit" sx={{ marginRight: "32px"}}>BFS</Button>
+                            <Button color="inherit" sx={{ marginRight: "30px"}}>PFS</Button>
+                            <Button color="inherit">Binary Search</Button>
+                        </Box>
                     ) : currentPage === 3 ? (
-                        <Button color="inherit">Graph Traversal</Button>
+                        <Box>
+                            <Button color="inherit" sx={{ marginRight: "30px"}}>Dijkstra</Button>
+                            <Button color="inherit" sx={{ marginRight: "30px"}}>Bellman-Ford</Button>
+                            <Button color="inherit" sx={{ marginRight: "32px"}}>Floyd</Button>
+                            <Button color="inherit" sx={{ marginRight: "30px"}}>Prim</Button>
+                            <Button color="inherit">Kruskal</Button>
+                        </Box>
                     ) : (<div></div>)}
                     
                 </Toolbar>
