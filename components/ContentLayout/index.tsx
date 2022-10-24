@@ -1,7 +1,7 @@
 import { Box, CSSObject, List, Stack, Typography } from '@mui/material';
 import { grey } from '@mui/material/colors';
 import React, { Children, cloneElement, ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
-import useCategory from '../../hooks/useCategory';
+import useCategoryContext from '../../state/contexts/CategoryContext';
 import { getChildren, isComponent } from '../Utilities';
 import Heading, { HeadingProps } from './Heading';
 
@@ -18,14 +18,13 @@ const typographyStyle: CSSObject = {
 
 const ContentLayout = ({ children }: { children?: ReactNode }) => {
   const [currentId, setCurrentId] = useState('');
-  const category = useCategory();
-
+  const { category } = useCategoryContext();
   const activeTypographyStyle = useMemo<CSSObject>(
     () => ({
       color: category.colour,
       borderColor: category.colour,
     }),
-    [category],
+    [category.colour],
   );
 
   const getId = useCallback((props: HeadingProps): string => {

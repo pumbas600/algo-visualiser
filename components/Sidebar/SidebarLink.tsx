@@ -1,7 +1,7 @@
 import { CSSObject, ListItemButton, ListItemIcon, ListItemText, Tooltip } from '@mui/material';
+import Link from 'next/link';
 import { useCallback } from 'react';
 import { CategoryData } from '../../data/CategoryData';
-import Link from 'next/link';
 
 export interface SidebarLinkProps {
   category: CategoryData;

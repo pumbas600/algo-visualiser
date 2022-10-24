@@ -25,7 +25,7 @@ export const sidebarCategories: CategoryData[] = [
     icon: <DataArrayIcon />,
     title: 'Data Structures',
     colour: green[500],
-    href: '/datastructures/',
+    href: '/datastructures',
   },
   {
     icon: <SortIcon />,

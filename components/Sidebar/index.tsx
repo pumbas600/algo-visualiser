@@ -9,7 +9,7 @@ import { ReactNode, useCallback, useState } from 'react';
 import { Stack } from '@mui/material';
 import { useRouter } from 'next/router';
 import SidebarLink from './SidebarLink';
-import { matchesCategory } from '../../hooks/useCategory';
+import { matchesCategory } from '../../state/providers/CategoryProvider';
 import { sidebarCategories } from '../../data/CategoryData';
 
 const drawerWidth = 240;
