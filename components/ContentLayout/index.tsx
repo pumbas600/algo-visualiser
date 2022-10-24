@@ -1,6 +1,7 @@
 import { Box, CSSObject, List, Stack, Typography } from '@mui/material';
-import { blue, grey } from '@mui/material/colors';
-import React, { Children, cloneElement, ReactNode, useCallback, useEffect, useState } from 'react';
+import { grey } from '@mui/material/colors';
+import React, { Children, cloneElement, ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
+import useCategory from '../../hooks/useCategory';
 import { getChildren, isComponent } from '../Utilities';
 import Heading, { HeadingProps } from './Heading';
 
@@ -15,13 +16,17 @@ const typographyStyle: CSSObject = {
   },
 };
 
-const activeTypographyStyle: CSSObject = {
-  color: blue[500],
-  borderColor: blue[500],
-};
-
 const ContentLayout = ({ children }: { children?: ReactNode }) => {
   const [currentId, setCurrentId] = useState('');
+  const category = useCategory();
+
+  const activeTypographyStyle = useMemo<CSSObject>(
+    () => ({
+      color: category.colour,
+      borderColor: category.colour,
+    }),
+    [category],
+  );
 
   const getId = useCallback((props: HeadingProps): string => {
     return props.id ?? props.title.replaceAll(/\s+/g, '-').toLowerCase();
@@ -97,7 +102,7 @@ const ContentLayout = ({ children }: { children?: ReactNode }) => {
         </Typography>
       );
     },
-    [getId, currentId, scrollIntoView],
+    [getId, currentId, activeTypographyStyle, scrollIntoView],
   );
 
   const renderContents = useCallback((): ReactNode => {
