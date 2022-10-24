@@ -23,6 +23,9 @@ const ContentLayout = ({ children }: { children?: ReactNode }) => {
     () => ({
       color: category.colour,
       borderColor: category.colour,
+      '&:hover': {
+        borderColor: grey[500],
+      },
     }),
     [category.colour],
   );
