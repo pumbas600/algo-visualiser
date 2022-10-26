@@ -1,6 +1,7 @@
 import { Box, CSSObject, List, Stack, Typography } from '@mui/material';
 import { grey } from '@mui/material/colors';
 import React, { Children, cloneElement, ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
+import useDebounce from '../../hooks/UseDebounce';
 import useCategoryContext from '../../state/contexts/CategoryContext';
 import { getChildren, isComponent } from '../Utilities';
 import Heading, { HeadingProps } from './Heading';
@@ -53,9 +54,8 @@ const ContentLayout = ({ children }: { children?: ReactNode }) => {
         return;
       }
     }
-
     setCurrentId('');
-  }, [getChildHeadings, getId]);
+  }, [setCurrentId, getChildHeadings, getId]);
 
   useEffect(() => {
     determineCurrentHeaderId();
@@ -69,9 +69,11 @@ const ContentLayout = ({ children }: { children?: ReactNode }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [determineCurrentHeaderId]);
 
-  const scrollIntoView = useCallback((id: string) => {
-    document.getElementById(id)?.scrollIntoView();
-  }, []);
+  const scrollIntoView = useCallback(
+    (id: string) => {
+      document.getElementById(id)?.scrollIntoView();
+    }, [],
+  );
 
   const renderChildren = useCallback((): ReactNode => {
     const allIds: string[] = [];
