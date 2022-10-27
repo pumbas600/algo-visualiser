@@ -1,12 +1,12 @@
 import ContentLayout from '../../components/ContentLayout';
 import Heading from '../../components/ContentLayout/Heading';
 
-const Sorting = () => {
+const Topological = () => {
   return (
     <ContentLayout>
-      <Heading title="Sorting" />
+      <Heading title="Topological Sorting" />
     </ContentLayout>
   );
 };
 
-export default Sorting;
+export default Topological;

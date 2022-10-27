@@ -67,32 +67,32 @@ export const sidebarCategories: CategoryData[] = [
     href: '/sorting',
     subCategories: [
       {
-        title: 'Selection Sort',
-        href: 'selection',
+        title: 'Selection',
+        href: '/selection',
       },
       {
-        title: 'Insertion Sort',
+        title: 'Insertion',
         href: '/insertion',
       },
       {
-        title: 'Shell Sort',
+        title: 'Shell',
         href: '/shell',
       },
       {
-        title: 'Merge Sort',
+        title: 'Merge',
         href: '/merge',
       },
       {
-        title: 'Quick Sort',
+        title: 'Quick',
         href: '/quick',
       },
       {
-        title: 'Heap Sort',
+        title: 'Heap',
         href: '/heap',
       },
       {
-        title: 'Topological Sorting',
-        href: 'topologicalsorting',
+        title: 'Topological',
+        href: '/topological',
       },
     ],
   },

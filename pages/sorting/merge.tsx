@@ -1,12 +1,12 @@
 import ContentLayout from '../../components/ContentLayout';
 import Heading from '../../components/ContentLayout/Heading';
 
-const Sorting = () => {
+const Merge = () => {
   return (
     <ContentLayout>
-      <Heading title="Sorting" />
+      <Heading title="Merge Sort" />
     </ContentLayout>
   );
 };
 
-export default Sorting;
+export default Merge;

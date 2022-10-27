@@ -1,12 +1,12 @@
 import ContentLayout from '../../components/ContentLayout';
 import Heading from '../../components/ContentLayout/Heading';
 
-const Sorting = () => {
+const Heap = () => {
   return (
     <ContentLayout>
-      <Heading title="Sorting" />
+      <Heading title="Heap Sort" />
     </ContentLayout>
   );
 };
 
-export default Sorting;
+export default Heap;

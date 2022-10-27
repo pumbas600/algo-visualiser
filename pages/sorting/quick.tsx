@@ -1,12 +1,12 @@
 import ContentLayout from '../../components/ContentLayout';
 import Heading from '../../components/ContentLayout/Heading';
 
-const Sorting = () => {
+const Quick = () => {
   return (
     <ContentLayout>
-      <Heading title="Sorting" />
+      <Heading title="Quick Sort" />
     </ContentLayout>
   );
 };
 
-export default Sorting;
+export default Quick;

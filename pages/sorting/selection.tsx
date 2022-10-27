@@ -1,12 +1,12 @@
 import ContentLayout from '../../components/ContentLayout';
 import Heading from '../../components/ContentLayout/Heading';
 
-const Sorting = () => {
+const Selection = () => {
   return (
     <ContentLayout>
-      <Heading title="Sorting" />
+      <Heading title="Selection Sort" />
     </ContentLayout>
   );
 };
 
-export default Sorting;
+export default Selection;
