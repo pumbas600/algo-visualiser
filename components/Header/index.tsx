@@ -28,7 +28,7 @@ export default function Header() {
   return (
     <Box>
       {isVisible && (
-        <AppBar position="static">
+        <AppBar position="static" sx={{ bgcolor: category.current.colour }}>
           <Toolbar sx={{ gap: 6, justifyContent: 'flex-end' }}>{renderSubcategories()}</Toolbar>
         </AppBar>
       )}
