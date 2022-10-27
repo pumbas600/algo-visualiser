@@ -1,8 +1,9 @@
-import { Typography } from '@mui/material';
+import { TableBody, TableHead, TableRow, Typography } from '@mui/material';
 import InlineLink from '../../components/A';
 import Code from '../../components/Code';
 import ContentLayout from '../../components/ContentLayout';
 import Heading from '../../components/ContentLayout/Heading';
+import StyledTable, { StyledCell } from '../../components/StyledTable';
 
 const pseudocode = `def bellman_ford(weighted digraph (G, c); node s in V(G)):
     array dist[0..n-1]
@@ -37,10 +38,28 @@ const BellmanFord = () => {
       <Heading title="Psuedocode">
         <Code text={pseudocode} />
       </Heading>
-      <Heading subHeading title="Running Time">
+      <Heading subHeading title="Complexity">
+        <StyledTable>
+          <TableHead>
+            <TableRow>
+              <StyledCell>Graph Data Structure</StyledCell>
+              <StyledCell>Complexity</StyledCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            <TableRow>
+              <StyledCell>Adjacency List</StyledCell>
+              <StyledCell>Θ(ne)</StyledCell>
+            </TableRow>
+            <TableRow>
+              <StyledCell>Adjacency Matrix</StyledCell>
+              <StyledCell>Θ(n³)</StyledCell>
+            </TableRow>
+          </TableBody>
+        </StyledTable>
         <Typography>
-          Runs in <b>θ(ne)</b> time, where m is the number of edges and e is the number of nodes, if implemented with an
-          adjacency list. This is because the two for loops can be replaced with <code>for (x, v) in E(G)</code>.
+          Where e is the number of edges and n is the number of nodes. When implemented with an adjacency list, it runs
+          in <b>θ(ne)</b> time, because the two for loops can be replaced with <code>for (x, v) in E(G)</code>.
         </Typography>
       </Heading>
     </ContentLayout>
