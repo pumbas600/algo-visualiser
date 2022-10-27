@@ -48,7 +48,7 @@ const Kruskal = () => {
       </Heading>
       <Heading subHeading title="Disjoint Sets Version">
         <Typography>
-          The disjoint sets data structure has the operations <code>find</code> and <code>union</code>. They can be
+          The disjoint sets data structure has the operations <code>find</code> and <code>union</code>. It can be
           implemented efficiently so that the main time taken is due to the sorting.
         </Typography>
         <Code text={disjointSetsPseudocode} />
