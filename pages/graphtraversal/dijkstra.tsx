@@ -1,4 +1,5 @@
 import { List, ListItem, TableBody, TableHead, TableRow, Typography } from '@mui/material';
+import InlineLink from '../../components/A';
 import Code from '../../components/Code';
 import ContentLayout from '../../components/ContentLayout';
 import Heading from '../../components/ContentLayout/Heading';
@@ -91,7 +92,8 @@ const Dijkstra = () => {
       </Heading>
       <Heading subHeading title="Running Time">
         <Typography>
-          Using a binary heap: <b>O((n + e)log n)</b>, where e is the number of edges and n is the number of nodes.
+          Using a <InlineLink href="/datastructures/heap">binary heap</InlineLink>: <b>O((n + e)log n)</b>, where e is
+          the number of edges and n is the number of nodes.
         </Typography>
       </Heading>
     </ContentLayout>
