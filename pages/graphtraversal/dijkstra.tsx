@@ -22,7 +22,7 @@ const simplePsuedocode = `def dijkstra(weighted digraph (G, c), node s in V(G)):
     return dist
 `;
 
-const priorityFirstPseudocode = `def dijkstra2(weighted digraph (G, c), node s in V(G)):
+const priorityFirstPseudocode = `def dijkstra(weighted digraph (G, c), node s in V(G)):
     Q = PriorityQueue()
     array colour[0..n-1], dist[0..n-1]
 
@@ -90,7 +90,7 @@ const Dijkstra = () => {
       </Heading>
       <Heading subHeading title="Running Time">
         <Typography>
-          Using a binary heap: <b>O((n + m)log n</b>.
+          Using a binary heap: <b>O((n + m)log n)</b>.
         </Typography>
       </Heading>
     </ContentLayout>
