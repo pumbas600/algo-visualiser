@@ -1,12 +1,12 @@
 import ContentLayout from '../../components/ContentLayout';
 import Heading from '../../components/ContentLayout/Heading';
 
-const Searching = () => {
+const Kruskal = () => {
   return (
     <ContentLayout>
-      <Heading title="Searching Algorithms" />
+      <Heading title="Kruskal's Algorithm" />
     </ContentLayout>
   );
 };
 
-export default Searching;
+export default Kruskal;

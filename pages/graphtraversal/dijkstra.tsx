@@ -1,12 +1,12 @@
 import ContentLayout from '../../components/ContentLayout';
 import Heading from '../../components/ContentLayout/Heading';
 
-const Searching = () => {
+const Dijkstra = () => {
   return (
     <ContentLayout>
-      <Heading title="Searching Algorithms" />
+      <Heading title="Dijkstra's Algorithm" />
     </ContentLayout>
   );
 };
 
-export default Searching;
+export default Dijkstra;

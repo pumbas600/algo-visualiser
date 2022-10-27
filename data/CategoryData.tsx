@@ -139,15 +139,15 @@ export const sidebarCategories: CategoryData[] = [
         href: '/bellmanford',
       },
       {
-        title: "Prim's",
+        title: 'Prim',
         href: '/prim',
       },
       {
-        title: "Kruskal's",
+        title: 'Kruskal',
         href: '/kruskal',
       },
       {
-        title: "Floyd's",
+        title: 'Floyd',
         href: '/floyd',
       },
     ],

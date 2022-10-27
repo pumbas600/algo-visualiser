@@ -4,7 +4,7 @@ import Heading from '../../components/ContentLayout/Heading';
 const Sorting = () => {
   return (
     <ContentLayout>
-      <Heading title="Sorting" />
+      <Heading title="Sorting Algorithms" />
     </ContentLayout>
   );
 };
