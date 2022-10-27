@@ -54,9 +54,10 @@ const Dijkstra = () => {
   return (
     <ContentLayout>
       <Heading title="Dijkstra's Algorithm" />
-      <Heading subHeading title="Limitations">
+      <Heading subHeading title="Facts">
         <ul>
-          <li>Cannot handle negative weights.</li>
+          <li>Greedy.</li>
+          <li>Doesn&apos;t support negative weights.</li>
         </ul>
       </Heading>
       <Heading title="Simple Version" />
