@@ -83,6 +83,7 @@ const Dijkstra = () => {
             </TableRow>
           </TableBody>
         </StyledTable>
+        <Typography>m is the number of edges, n is the number of nodes and a is a constant.</Typography>
       </Heading>
       <Heading title="Priority-First Search Version" />
       <Heading subHeading title="Psuedocode">
@@ -90,7 +91,7 @@ const Dijkstra = () => {
       </Heading>
       <Heading subHeading title="Running Time">
         <Typography>
-          Using a binary heap: <b>O((n + m)log n)</b>.
+          Using a binary heap: <b>O((n + m)log n)</b>, where m is the number of edges and n is the number of nodes.
         </Typography>
       </Heading>
     </ContentLayout>
