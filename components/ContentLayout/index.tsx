@@ -110,6 +110,8 @@ const ContentLayout = ({ children }: { children?: ReactNode }) => {
   const renderContents = useCallback((): ReactNode => {
     const headings = getChildHeadings();
 
+    if (headings.length === 0) return null;
+
     return (
       <List
         sx={{ position: 'fixed', right: '64px', width: '200px', display: { md: 'block', xs: 'none' } }}
