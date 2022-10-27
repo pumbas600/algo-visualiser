@@ -54,6 +54,11 @@ const Dijkstra = () => {
   return (
     <ContentLayout>
       <Heading title="Dijkstra's Algorithm" />
+      <Heading subHeading title="Limitations">
+        <ul>
+          <li>Cannot handle negative weights.</li>
+        </ul>
+      </Heading>
       <Heading title="Simple Version" />
       <Heading subHeading title="Psuedocode">
         <Code text={simplePsuedocode} />
@@ -86,11 +91,6 @@ const Dijkstra = () => {
         <Typography>
           Using a binary heap: <b>O((n + m)log n</b>.
         </Typography>
-      </Heading>
-      <Heading title="Limitations">
-        <List>
-          <ListItem>Negative Weights</ListItem>
-        </List>
       </Heading>
     </ContentLayout>
   );
