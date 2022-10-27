@@ -1,5 +1,5 @@
 import { TableBody, TableHead, TableRow } from '@mui/material';
-import { CodeBlock } from 'react-code-blocks';
+import Code from '../../components/Code';
 import ContentLayout from '../../components/ContentLayout';
 import Heading from '../../components/ContentLayout/Heading';
 import StyledTable, { StyledCell } from '../../components/StyledTable';
@@ -47,7 +47,7 @@ const Dijkstra = () => {
         </StyledTable>
       </Heading>
       <Heading subHeading title="Psuedocode">
-        <CodeBlock language="python" text={psuedocode} />
+        <Code text={psuedocode} />
       </Heading>
     </ContentLayout>
   );

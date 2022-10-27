@@ -2,13 +2,13 @@ import { Paper, styled, Table, TableCell, tableCellClasses, TableContainer } fro
 import { grey } from '@mui/material/colors';
 import { ReactNode } from 'react';
 
-export const StyledCell = styled(TableCell)(({ theme }) => ({
+export const StyledCell = styled(TableCell)({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: grey[300],
     fontWeight: 'bold',
   },
   fontSize: 15,
-}));
+});
 
 const StyledTable = ({ children }: { children?: ReactNode }) => {
   return (
