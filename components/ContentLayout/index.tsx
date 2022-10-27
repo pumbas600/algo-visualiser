@@ -127,7 +127,7 @@ const ContentLayout = ({ children }: { children?: ReactNode }) => {
 
   return (
     <Box display="flex" flexDirection="row" my={4} sx={{ overflowX: 'hidden' }}>
-      <Container maxWidth="md" sx={{ minWidth: 0 }}>
+      <Container maxWidth="lg" sx={{ minWidth: 0 }}>
         <Stack spacing={3} width="100%" pr={{ xs: 0, md: '264px' }} px={4}>
           {renderChildren()}
         </Stack>
