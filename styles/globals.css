@@ -13,11 +13,3 @@ a {
 * {
   box-sizing: border-box;
 }
-
-th {
-  font-weight: bold !important;
-}
-
-thead {
-  background-color: lightgrey;
-}

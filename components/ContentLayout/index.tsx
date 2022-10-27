@@ -1,7 +1,6 @@
-import { Box, CSSObject, List, Stack, Typography } from '@mui/material';
+import { Box, CSSObject, List, Stack, Typography, Container } from '@mui/material';
 import { grey } from '@mui/material/colors';
 import React, { Children, cloneElement, ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
-import useDebounce from '../../hooks/UseDebounce';
 import useCategoryContext from '../../state/contexts/CategoryContext';
 import { getChildren, isComponent } from '../Utilities';
 import Heading, { HeadingProps } from './Heading';
@@ -114,7 +113,7 @@ const ContentLayout = ({ children }: { children?: ReactNode }) => {
 
     return (
       <List
-        sx={{ position: 'fixed', right: '64px', width: '200px', display: { md: 'block', xs: 'none' } }}
+        sx={{ right: '64px', minWidth: '200px', display: { md: 'block', xs: 'none' }, ml: 4 }}
         subheader={
           <Typography fontFamily="monospace" fontWeight="bold" color={grey[500]} mb={1} pl={2}>
             CONTENTS
@@ -127,10 +126,12 @@ const ContentLayout = ({ children }: { children?: ReactNode }) => {
   }, [getChildHeadings, renderHeading]);
 
   return (
-    <Box display="flex" flexDirection="row" my={4}>
-      <Stack spacing={1} width="100%" mr={{ xs: 0, md: '264px' }} px={8}>
-        {renderChildren()}
-      </Stack>
+    <Box display="flex" flexDirection="row" my={4} sx={{ overflowX: 'hidden' }}>
+      <Container maxWidth="md" sx={{ minWidth: 0 }}>
+        <Stack spacing={3} width="100%" mr={{ xs: 0, md: '264px' }} px={4}>
+          {renderChildren()}
+        </Stack>
+      </Container>
       {renderContents()}
     </Box>
   );

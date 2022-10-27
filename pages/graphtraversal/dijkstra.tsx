@@ -1,7 +1,8 @@
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import { TableBody, TableHead, TableRow } from '@mui/material';
 import { CodeBlock } from 'react-code-blocks';
 import ContentLayout from '../../components/ContentLayout';
 import Heading from '../../components/ContentLayout/Heading';
+import StyledTable, { StyledCell } from '../../components/StyledTable';
 
 const psuedocode = `def dijkstra(weighted digraph (G, c), node s in V(G)):
     array colour[0..n-1], dist[0..n-1]
@@ -25,29 +26,29 @@ const Dijkstra = () => {
   return (
     <ContentLayout>
       <Heading title="Dijkstra's Algorithm" />
-      <Heading subHeading title="Psuedocode" />
-      <CodeBlock language="python" text={psuedocode} />
-      <Heading subHeading title="Running Time" />
-      <TableContainer>
-        <Table>
+      <Heading subHeading title="Running Time">
+        <StyledTable>
           <TableHead>
             <TableRow>
-              <TableCell>Graph Data Structure</TableCell>
-              <TableCell>Running Time</TableCell>
+              <StyledCell>Graph Data Structure</StyledCell>
+              <StyledCell>Running Time</StyledCell>
             </TableRow>
           </TableHead>
           <TableBody>
             <TableRow>
-              <TableCell>Adjacency List</TableCell>
-              <TableCell>Θ(an + m) = Θ(n)</TableCell>
+              <StyledCell>Adjacency List</StyledCell>
+              <StyledCell>Θ(an + m) = Θ(n)</StyledCell>
             </TableRow>
             <TableRow>
-              <TableCell>Adjacency Matrix</TableCell>
-              <TableCell>Θ(an + n²) = Θ(n²)</TableCell>
+              <StyledCell>Adjacency Matrix</StyledCell>
+              <StyledCell>Θ(an + n²) = Θ(n²)</StyledCell>
             </TableRow>
           </TableBody>
-        </Table>
-      </TableContainer>
+        </StyledTable>
+      </Heading>
+      <Heading subHeading title="Psuedocode">
+        <CodeBlock language="python" text={psuedocode} />
+      </Heading>
     </ContentLayout>
   );
 };
