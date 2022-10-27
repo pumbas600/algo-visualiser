@@ -22,7 +22,7 @@ const SidebarLink = ({ category, isActive, isOpen }: SidebarLinkProps) => {
   }, [isActive, category.colour]);
 
   return (
-    <Link key={category.title} href={isActive ? '/' : category.href}>
+    <Link key={category.title} href={category.href}>
       <Tooltip title={category.title} placement="right" arrow disableHoverListener={isOpen}>
         <ListItemButton
           sx={{

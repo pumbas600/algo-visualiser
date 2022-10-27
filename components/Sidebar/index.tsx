@@ -5,12 +5,13 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import MenuIcon from '@mui/icons-material/Menu';
 import { ReactNode, useCallback, useState } from 'react';
 import { Stack } from '@mui/material';
 import { useRouter } from 'next/router';
 import SidebarLink from './SidebarLink';
 import { matchesCategory } from '../../state/providers/CategoryProvider';
-import { sidebarCategories } from '../../data/CategoryData';
+import { categories } from '../../data/CategoryData';
 import useCategoryContext from '../../state/contexts/CategoryContext';
 
 const drawerWidth = 240;
@@ -75,7 +76,7 @@ export default function Sidebar({ children }: { children?: ReactNode }) {
   };
 
   const renderLinks = useCallback((): ReactNode => {
-    return sidebarCategories.map((category) => {
+    return categories.map((category) => {
       const isActive = matchesCategory(router.pathname, category);
 
       return <SidebarLink key={category.href} category={category} isOpen={isOpen} isActive={isActive} />;
@@ -92,7 +93,7 @@ export default function Sidebar({ children }: { children?: ReactNode }) {
             </IconButton>
           ) : (
             <IconButton onClick={handleDrawerOpen} title="Expand sidebar" sx={{ color: 'white' }}>
-              <ChevronRightIcon fontSize="large" />
+              <MenuIcon />
             </IconButton>
           )}
         </DrawerHeader>

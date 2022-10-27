@@ -1,9 +1,10 @@
-import { blue, green, orange, purple, red } from '@mui/material/colors';
+import { blue, green, orange, purple, red, yellow } from '@mui/material/colors';
 import { ReactNode } from 'react';
 import DataArrayIcon from '@mui/icons-material/DataArray';
 import TimelineIcon from '@mui/icons-material/Timeline';
 import SearchIcon from '@mui/icons-material/Search';
 import SortIcon from '@mui/icons-material/Sort';
+import HomeIcon from '@mui/icons-material/Home';
 
 export interface CategoryData {
   matchExactly?: boolean;
@@ -20,18 +21,20 @@ export interface SubCategoryData {
 }
 
 export const homeCategory: CategoryData = {
+  icon: <HomeIcon />,
   matchExactly: true,
-  colour: blue[500],
+  colour: green[500],
   title: 'Home',
   href: '/',
   subCategories: [],
 };
 
-export const sidebarCategories: CategoryData[] = [
+export const categories: CategoryData[] = [
+  homeCategory,
   {
     icon: <DataArrayIcon />,
     title: 'Data Structures',
-    colour: green[500],
+    colour: orange[500],
     href: '/datastructures',
     subCategories: [
       {
@@ -63,7 +66,7 @@ export const sidebarCategories: CategoryData[] = [
   {
     icon: <SortIcon />,
     title: 'Sorting',
-    colour: blue[500],
+    colour: red[500],
     href: '/sorting',
     subCategories: [
       {
@@ -127,7 +130,7 @@ export const sidebarCategories: CategoryData[] = [
   {
     icon: <TimelineIcon />,
     title: 'Graph Traversal',
-    colour: red[500],
+    colour: blue[500],
     href: '/graphtraversal',
     subCategories: [
       {
@@ -153,5 +156,3 @@ export const sidebarCategories: CategoryData[] = [
     ],
   },
 ];
-
-export const categories: CategoryData[] = [homeCategory, ...sidebarCategories];
