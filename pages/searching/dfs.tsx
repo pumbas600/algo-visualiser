@@ -56,9 +56,9 @@ const DepthFirstSearch = () => {
       <Heading title="Depth-first Search" />
       <Heading subHeading title="Facts">
         <ul>
-          <li>A specific implementation of the General Graph Traversal Algorithm</li>
-          <li>Grey vertex selection rule: The next grey vertex is the youngest remaining grey vertex</li>
-          <li>Utilises a <Link href="/datastructures/stack"><a style={{ color: "#0000EE", textDecoration: "underline" }}>stack</a></Link> implementation to decide next node to visit</li>
+          <li>A specific implementation of the General Graph Traversal Algorithm.</li>
+          <li>Grey vertex selection rule: The next grey vertex is the youngest remaining grey vertex.</li>
+          <li>Utilises a <Link href="/datastructures/stack"><a style={{ color: "#0000EE", textDecoration: "underline" }}>stack</a></Link> implementation to decide next node to visit.</li>
         </ul>
       </Heading>
       <Heading title="Pseudocode" />
@@ -119,10 +119,10 @@ const DepthFirstSearch = () => {
           </TableBody>
         </StyledTable>
         <Heading title="Determining Ancestors Using DFS" />
-        Let v and w be nodes in a search forest F obtained by performing DFS. Additionally suppose that seen[v] {"<"} seen[w]
+        Let v and w be nodes in a search forest F obtained by performing DFS. Additionally suppose that seen[v] {"<"} seen[w].
         <ul>
-          <li>If v is an ancestor of w in F: seen[v] {"<"} seen[w] {"<"} done[w] {"<"} done[v]</li>
-          <li>If v is not an ancestor of w in F: seen[v] {"<"} done[v] {"<"} seen[w] {"<"} done[w]</li>
+          <li>If v is an ancestor of w in F: seen[v] {"<"} seen[w] {"<"} done[w] {"<"} done[v].</li>
+          <li>If v is not an ancestor of w in F: seen[v] {"<"} done[v] {"<"} seen[w] {"<"} done[w].</li>
         </ul>
     </ContentLayout>
   );
