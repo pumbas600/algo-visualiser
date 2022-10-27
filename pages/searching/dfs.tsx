@@ -1,9 +1,9 @@
-import { List, ListItem, TableBody, TableHead, TableRow, Typography } from '@mui/material';
+import { TableBody, TableHead, TableRow, Typography } from '@mui/material';
 import ContentLayout from '../../components/ContentLayout';
 import Heading from '../../components/ContentLayout/Heading';
 import Code from '../../components/Code';
-import Link from 'next/link';
 import StyledTable, { StyledCell } from '../../components/StyledTable';
+import InlineLink from '../../components/A';
 
 const dfsPseudocode = `def dfs(graph G, node s):
     stack S
@@ -58,11 +58,8 @@ const DepthFirstSearch = () => {
           <li>A specific implementation of the General Graph Traversal Algorithm.</li>
           <li>Grey vertex selection rule: The next grey vertex is the youngest remaining grey vertex.</li>
           <li>
-            Utilises a{' '}
-            <Link href="/datastructures/stack">
-              <a style={{ color: '#0000EE', textDecoration: 'underline' }}>stack</a>
-            </Link>{' '}
-            implementation to decide next node to visit.
+            Utilises a <InlineLink href="/datastructures/stack">stack</InlineLink> implementation to decide next node to
+            visit.
           </li>
         </ul>
       </Heading>
