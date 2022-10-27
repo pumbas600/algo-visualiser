@@ -70,8 +70,8 @@ const Dijkstra = () => {
         <StyledTable>
           <TableHead>
             <TableRow>
-              <StyledCell>Graph Data Structure.</StyledCell>
-              <StyledCell>Running Time.</StyledCell>
+              <StyledCell>Graph Data Structure</StyledCell>
+              <StyledCell>Running Time</StyledCell>
             </TableRow>
           </TableHead>
           <TableBody>
