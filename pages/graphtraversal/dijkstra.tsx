@@ -1,4 +1,4 @@
-import { List, ListItem, TableBody, TableHead, TableRow, Typography } from '@mui/material';
+import { TableBody, TableHead, TableRow, Typography } from '@mui/material';
 import InlineLink from '../../components/A';
 import Code from '../../components/Code';
 import ContentLayout from '../../components/ContentLayout';
@@ -59,6 +59,7 @@ const Dijkstra = () => {
         <ul>
           <li>Greedy.</li>
           <li>Doesn&apos;t support negative weights.</li>
+          <li>Can solve all-pairs shortest path problem (APSP) by running Dijkstra from every node.</li>
         </ul>
       </Heading>
       <Heading title="Simple Version" />
@@ -71,9 +72,6 @@ const Dijkstra = () => {
             <TableRow>
               <StyledCell>Graph Data Structure.</StyledCell>
               <StyledCell>Running Time.</StyledCell>
-              <StyledCell>
-                Can solve all-pairs shortest path problem (APSP) by running Dijkstra from every node.
-              </StyledCell>
             </TableRow>
           </TableHead>
           <TableBody>
