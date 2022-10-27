@@ -30,8 +30,8 @@ const ContentLayout = ({ children }: { children?: ReactNode }) => {
     [category.colour],
   );
 
-  const getId = useCallback((props: HeadingProps): string => {
-    return props.id ?? props.title.replaceAll(/\s+/g, '-').toLowerCase();
+  const getId = useCallback((props: HeadingProps, index: number): string => {
+    return props.id ?? `${props.title.replaceAll(/\s+/g, '-').toLowerCase()}-${index}`;
   }, []);
 
   const getChildHeadings = useCallback((): HeadingProps[] => {
@@ -75,9 +75,9 @@ const ContentLayout = ({ children }: { children?: ReactNode }) => {
   const renderChildren = useCallback((): ReactNode => {
     const allIds: string[] = [];
 
-    const renderedChildren = Children.map(children, (c) => {
+    const renderedChildren = Children.map(children, (c, index) => {
       if (isComponent(Heading, c) && !c.props.id) {
-        const id = getId(c.props);
+        const id = getId(c.props, index);
         allIds.push(id);
         return cloneElement(c, { ...c.props, id });
       }
@@ -87,8 +87,8 @@ const ContentLayout = ({ children }: { children?: ReactNode }) => {
   }, [children, getId]);
 
   const renderHeading = useCallback(
-    (heading: HeadingProps) => {
-      const id = getId(heading);
+    (heading: HeadingProps, index: number) => {
+      const id = getId(heading, index);
       const inSection = id === currentId;
 
       const styles = {
@@ -113,7 +113,7 @@ const ContentLayout = ({ children }: { children?: ReactNode }) => {
 
     return (
       <List
-        sx={{ right: '64px', minWidth: '200px', display: { md: 'block', xs: 'none' }, ml: 4 }}
+        sx={{ position: 'fixed', right: '64px', minWidth: '200px', display: { md: 'block', xs: 'none' } }}
         subheader={
           <Typography fontFamily="monospace" fontWeight="bold" color={grey[500]} mb={1} pl={2}>
             CONTENTS
@@ -128,7 +128,7 @@ const ContentLayout = ({ children }: { children?: ReactNode }) => {
   return (
     <Box display="flex" flexDirection="row" my={4} sx={{ overflowX: 'hidden' }}>
       <Container maxWidth="md" sx={{ minWidth: 0 }}>
-        <Stack spacing={3} width="100%" mr={{ xs: 0, md: '264px' }} px={4}>
+        <Stack spacing={3} width="100%" pr={{ xs: 0, md: '264px' }} px={4}>
           {renderChildren()}
         </Stack>
       </Container>
