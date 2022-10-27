@@ -1,12 +1,12 @@
 import ContentLayout from '../../components/ContentLayout';
 import Heading from '../../components/ContentLayout/Heading';
 
-const DataStructures = () => {
+const BinaryTree = () => {
   return (
     <ContentLayout>
-      <Heading title="Data Structures" />
+      <Heading title="Binary Tree" />
     </ContentLayout>
   );
 };
 
-export default DataStructures;
+export default BinaryTree;

@@ -1,12 +1,12 @@
 import ContentLayout from '../../components/ContentLayout';
 import Heading from '../../components/ContentLayout/Heading';
 
-const DataStructures = () => {
+const Stack = () => {
   return (
     <ContentLayout>
-      <Heading title="Data Structures" />
+      <Heading title="Stack" />
     </ContentLayout>
   );
 };
 
-export default DataStructures;
+export default Stack;
