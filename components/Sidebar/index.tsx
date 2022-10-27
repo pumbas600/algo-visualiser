@@ -11,6 +11,7 @@ import { useRouter } from 'next/router';
 import SidebarLink from './SidebarLink';
 import { matchesCategory } from '../../state/providers/CategoryProvider';
 import { sidebarCategories } from '../../data/CategoryData';
+import useCategoryContext from '../../state/contexts/CategoryContext';
 
 const drawerWidth = 240;
 
@@ -41,6 +42,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   padding: theme.spacing(0, 1),
   // necessary for content to be below app bar
   ...theme.mixins.toolbar,
+  borderRightWidth: 0,
 }));
 
 const CustomDrawer = styled(Drawer, { shouldForwardProp: (prop) => prop !== 'open' })(({ theme, open }) => ({
@@ -61,6 +63,7 @@ const CustomDrawer = styled(Drawer, { shouldForwardProp: (prop) => prop !== 'ope
 export default function Sidebar({ children }: { children?: ReactNode }) {
   const theme = useTheme();
   const router = useRouter();
+  const category = useCategoryContext();
   const [isOpen, setIsOpen] = useState(false);
 
   const handleDrawerOpen = () => {
@@ -82,13 +85,13 @@ export default function Sidebar({ children }: { children?: ReactNode }) {
   return (
     <Box>
       <CustomDrawer variant="permanent" open={isOpen}>
-        <DrawerHeader sx={{ justifyContent: isOpen ? 'flex-end' : 'center' }}>
+        <DrawerHeader sx={{ justifyContent: isOpen ? 'flex-end' : 'center', bgcolor: category.current.colour }}>
           {isOpen ? (
-            <IconButton onClick={handleDrawerClose} title="Collapse sidebar">
+            <IconButton onClick={handleDrawerClose} title="Collapse sidebar" sx={{ color: 'white' }}>
               {theme.direction === 'rtl' ? <ChevronRightIcon fontSize="large" /> : <ChevronLeftIcon fontSize="large" />}
             </IconButton>
           ) : (
-            <IconButton onClick={handleDrawerOpen} title="Expand sidebar">
+            <IconButton onClick={handleDrawerOpen} title="Expand sidebar" sx={{ color: 'white' }}>
               <ChevronRightIcon fontSize="large" />
             </IconButton>
           )}
