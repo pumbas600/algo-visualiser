@@ -1,11 +1,7 @@
-import { Box } from '@mui/material';
+import ContentLayout from '../../components/ContentLayout';
 
 const DataStructures = () => {
-  return (
-    <Box ml="200px" color="white">
-      Hi!
-    </Box>
-  );
+  return <ContentLayout></ContentLayout>;
 };
 
 export default DataStructures;
