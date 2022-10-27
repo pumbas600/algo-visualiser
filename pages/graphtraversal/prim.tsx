@@ -3,7 +3,7 @@ import Code from '../../components/Code';
 import ContentLayout from '../../components/ContentLayout';
 import Heading from '../../components/ContentLayout/Heading';
 
-const simplePsuedocode = `def prim(weighted digraph (G, c), vertex s in V(G)):
+const simplePsuedocode = `def prim(weighted graph (G, c), vertex s in V(G)):
     S = { s }
     E = {}
     
@@ -15,7 +15,7 @@ const simplePsuedocode = `def prim(weighted digraph (G, c), vertex s in V(G)):
     return E
 `;
 
-const priorityFirstPseudocode = `def prim(weighted digraph (G, c), node s in V(G)):
+const priorityFirstPseudocode = `def prim(weighted graph (G, c), node s in V(G)):
     Q = PriorityQueue()
     array colour[0..n-1], pred[0..n-1]
 
