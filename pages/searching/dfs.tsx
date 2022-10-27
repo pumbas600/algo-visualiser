@@ -91,7 +91,7 @@ const DepthFirstSearch = () => {
           </TableBody>
         </StyledTable>
       <Heading title="Types of Arcs" />
-      Let (v, w) be an arc in a digraph traversed by DFS.
+      <Typography>Let (v, w) be an arc in a digraph traversed by DFS.</Typography>
       <StyledTable>
           <TableHead>
             <TableRow>
@@ -119,7 +119,7 @@ const DepthFirstSearch = () => {
           </TableBody>
         </StyledTable>
         <Heading title="Determining Ancestors Using DFS" />
-        Let v and w be nodes in a search forest F obtained by performing DFS. Additionally suppose that seen[v] {"<"} seen[w].
+        <Typography>Let v and w be nodes in a search forest F obtained by performing DFS. Additionally suppose that seen[v] {"<"} seen[w].</Typography>
         <ul>
           <li>If v is an ancestor of w in F: seen[v] {"<"} seen[w] {"<"} done[w] {"<"} done[v].</li>
           <li>If v is not an ancestor of w in F: seen[v] {"<"} done[v] {"<"} seen[w] {"<"} done[w].</li>
