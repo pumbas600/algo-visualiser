@@ -1,4 +1,5 @@
 import { Typography } from '@mui/material';
+import InlineLink from '../../components/A';
 import Code from '../../components/Code';
 import ContentLayout from '../../components/ContentLayout';
 import Heading from '../../components/ContentLayout/Heading';
@@ -28,6 +29,9 @@ const BellmanFord = () => {
           <li>Can handle negative weights.</li>
           <li>Doesn&apos;t support negative weight cycles.</li>
           <li>Can be modified to detect negative weight cycles.</li>
+          <li>
+            Less efficient than <InlineLink href="/graphtraversal/dijkstra">Dijkstra</InlineLink>.
+          </li>
         </ul>
       </Heading>
       <Heading title="Psuedocode">
@@ -35,7 +39,7 @@ const BellmanFord = () => {
       </Heading>
       <Heading subHeading title="Running Time">
         <Typography>
-          Runs in time <b>θ(ne)</b>, where m is the number of edges and e is the number of nodes, if implemented with an
+          Runs in <b>θ(ne)</b> time, where m is the number of edges and e is the number of nodes, if implemented with an
           adjacency list. This is because the two for loops can be replaced with <code>for (x, v) in E(G)</code>.
         </Typography>
       </Heading>

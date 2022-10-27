@@ -69,8 +69,11 @@ const Dijkstra = () => {
         <StyledTable>
           <TableHead>
             <TableRow>
-              <StyledCell>Graph Data Structure</StyledCell>
-              <StyledCell>Running Time</StyledCell>
+              <StyledCell>Graph Data Structure.</StyledCell>
+              <StyledCell>Running Time.</StyledCell>
+              <StyledCell>
+                Can solve all-pairs shortest path problem (APSP) by running Dijkstra from every node.
+              </StyledCell>
             </TableRow>
           </TableHead>
           <TableBody>
