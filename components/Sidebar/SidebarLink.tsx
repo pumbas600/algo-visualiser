@@ -1,35 +1,29 @@
 import { CSSObject, ListItemButton, ListItemIcon, ListItemText, Tooltip } from '@mui/material';
 import Link from 'next/link';
-import { ReactNode, useCallback } from 'react';
-
-export interface SidebarLinkData {
-  icon?: ReactNode;
-  href: string;
-  title: string;
-  colour: string;
-}
+import { useCallback } from 'react';
+import { CategoryData } from '../../data/CategoryData';
 
 export interface SidebarLinkProps {
-  link: SidebarLinkData;
+  category: CategoryData;
   isActive: boolean;
   isOpen: boolean;
 }
 
-const SidebarLink = ({ link, isActive, isOpen }: SidebarLinkProps) => {
+const SidebarLink = ({ category, isActive, isOpen }: SidebarLinkProps) => {
   const getItemButtonStyle = useCallback((): CSSObject => {
     return isActive
       ? {
-          bgcolor: link.colour,
+          bgcolor: category.colour,
           color: 'white',
         }
       : {
-          color: link.colour,
+          color: category.colour,
         };
-  }, [isActive, link.colour]);
+  }, [isActive, category.colour]);
 
   return (
-    <Link key={link.title} href={isActive ? '/' : link.href}>
-      <Tooltip title={link.title} placement="right" arrow disableHoverListener={isOpen}>
+    <Link key={category.title} href={isActive ? '/' : category.href}>
+      <Tooltip title={category.title} placement="right" arrow disableHoverListener={isOpen}>
         <ListItemButton
           sx={{
             mx: 0.5,
@@ -37,7 +31,7 @@ const SidebarLink = ({ link, isActive, isOpen }: SidebarLinkProps) => {
             justifyContent: isOpen ? 'flex-start' : 'center',
             borderRadius: 24,
             '&:hover': {
-              bgcolor: link.colour,
+              bgcolor: category.colour,
               color: 'white',
             },
             ...getItemButtonStyle(),
@@ -51,10 +45,10 @@ const SidebarLink = ({ link, isActive, isOpen }: SidebarLinkProps) => {
               color: 'inherit',
             }}
           >
-            {link.icon}
+            {category.icon}
           </ListItemIcon>
           <ListItemText
-            primary={link.title}
+            primary={category.title}
             primaryTypographyProps={{
               color: 'inherit',
               fontWeight: 'bold',

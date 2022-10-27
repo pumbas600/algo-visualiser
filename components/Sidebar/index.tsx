@@ -3,18 +3,14 @@ import Drawer from '@mui/material/Drawer';
 import { CSSObject, styled, Theme, useTheme } from '@mui/material/styles';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import DataArrayIcon from '@mui/icons-material/DataArray';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import SearchIcon from '@mui/icons-material/Search';
-import SortIcon from '@mui/icons-material/Sort';
-import TimelineIcon from '@mui/icons-material/Timeline';
 import { ReactNode, useCallback, useState } from 'react';
 import { Stack } from '@mui/material';
-import { blue, green, purple, red } from '@mui/material/colors';
 import { useRouter } from 'next/router';
-import SidebarLink, { SidebarLinkData } from './SidebarLink';
+import SidebarLink from './SidebarLink';
+import { matchesCategory } from '../../state/providers/CategoryProvider';
+import { sidebarCategories } from '../../data/CategoryData';
 
 const drawerWidth = 240;
 
@@ -62,33 +58,6 @@ const CustomDrawer = styled(Drawer, { shouldForwardProp: (prop) => prop !== 'ope
   }),
 }));
 
-const SidebarLinks: SidebarLinkData[] = [
-  {
-    icon: <DataArrayIcon />,
-    title: 'Data Structures',
-    colour: green[500],
-    href: '/datastructures',
-  },
-  {
-    icon: <SortIcon />,
-    title: 'Sorting',
-    colour: blue[500],
-    href: '/sorting',
-  },
-  {
-    icon: <SearchIcon />,
-    title: 'Searching',
-    colour: purple[500],
-    href: '/searching',
-  },
-  {
-    icon: <TimelineIcon />,
-    title: 'Graph Traversal',
-    colour: red[500],
-    href: '/graphtraversal',
-  },
-];
-
 export default function Sidebar({ children }: { children?: ReactNode }) {
   const theme = useTheme();
   const router = useRouter();
@@ -103,12 +72,12 @@ export default function Sidebar({ children }: { children?: ReactNode }) {
   };
 
   const renderLinks = useCallback((): ReactNode => {
-    return SidebarLinks.map((link) => {
-      const isActive = router.asPath.includes(link.href);
+    return sidebarCategories.map((category) => {
+      const isActive = matchesCategory(router.pathname, category);
 
-      return <SidebarLink key={link.href} link={link} isOpen={isOpen} isActive={isActive} />;
+      return <SidebarLink key={category.href} category={category} isOpen={isOpen} isActive={isActive} />;
     });
-  }, [isOpen, router.asPath]);
+  }, [isOpen, router.pathname]);
 
   return (
     <Box>
