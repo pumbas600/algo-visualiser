@@ -90,6 +90,10 @@ export const sidebarCategories: CategoryData[] = [
         title: 'Heap Sort',
         href: '/heap',
       },
+      {
+        title: 'Topological Sorting',
+        href: 'topologicalsorting',
+      },
     ],
   },
   {
@@ -106,14 +110,6 @@ export const sidebarCategories: CategoryData[] = [
         title: 'Quick Select',
         href: 'quickselect',
       },
-    ],
-  },
-  {
-    icon: <TimelineIcon />,
-    title: 'Graph Traversal',
-    colour: red[500],
-    href: '/graphtraversal',
-    subCategories: [
       {
         title: 'Depth-first Search',
         href: 'dfs',
@@ -126,17 +122,13 @@ export const sidebarCategories: CategoryData[] = [
         title: 'Priority-first Search',
         href: 'pfs',
       },
-      {
-        title: 'Topological Sorting',
-        href: 'topologicalsorting',
-      },
     ],
   },
   {
     icon: <TimelineIcon />,
-    title: 'Minimum Paths',
-    colour: orange[500],
-    href: '/minimumpaths',
+    title: 'Graph Traversal',
+    colour: red[500],
+    href: '/graphtraversal',
     subCategories: [
       {
         title: 'Dijkstra',
@@ -147,16 +139,16 @@ export const sidebarCategories: CategoryData[] = [
         href: 'bellmanford',
       },
       {
-        title: "Floyd's",
-        href: 'floyd',
-      },
-      {
         title: "Prim's",
         href: 'prim',
       },
       {
         title: "Kruskal's",
         href: 'kruskal',
+      },
+      {
+        title: "Floyd's",
+        href: 'floyd',
       },
     ],
   },

@@ -98,7 +98,9 @@ export default function Sidebar({ children }: { children?: ReactNode }) {
           {renderLinks()}
         </Stack>
       </CustomDrawer>
-      <Box ml={8}>{children}</Box>
+      <Box ml={8} position="relative">
+        {children}
+      </Box>
     </Box>
   );
 }
