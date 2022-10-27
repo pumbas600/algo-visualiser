@@ -70,7 +70,7 @@ const Prim = () => {
       </Heading>
       <Heading subHeading title="Running Time">
         <Typography>
-          Runs in best case time <b>O(m + nlog n)</b>, where m is the number of edges and n is the number of nodes..
+          Runs in best case time <b>O(e + nlog n)</b>, where e is the number of edges and n is the number of nodes.
         </Typography>
       </Heading>
     </ContentLayout>

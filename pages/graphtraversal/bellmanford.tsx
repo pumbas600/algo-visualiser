@@ -35,8 +35,8 @@ const BellmanFord = () => {
       </Heading>
       <Heading subHeading title="Running Time">
         <Typography>
-          Runs in time <b>θ(nm)</b> if implemented with an adjacency list as the two for loops can be replaced with{' '}
-          <code>for (x, v) in E(G)</code>. m is the number of edges and n is the number of nodes.
+          Runs in time <b>θ(ne)</b>, where m is the number of edges and e is the number of nodes, if implemented with an
+          adjacency list. This is because the two for loops can be replaced with <code>for (x, v) in E(G)</code>.
         </Typography>
       </Heading>
     </ContentLayout>

@@ -55,7 +55,7 @@ const Kruskal = () => {
       </Heading>
       <Heading subHeading title="Running Time">
         <Typography>
-          Can be implemented to run in <b>O(mlog n)</b> time, where m is the number of edges and n is the number of
+          Can be implemented to run in <b>O(elog n)</b> time, where e is the number of edges and n is the number of
           nodes.
         </Typography>
       </Heading>
