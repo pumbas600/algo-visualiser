@@ -49,7 +49,6 @@ const dfsVisitRecursivePseudocode = `def DFSVisit(node s):
     done[s] = time; time = time + 1
 `;
 
-
 const DepthFirstSearch = () => {
   return (
     <ContentLayout>
@@ -58,21 +57,27 @@ const DepthFirstSearch = () => {
         <ul>
           <li>A specific implementation of the General Graph Traversal Algorithm.</li>
           <li>Grey vertex selection rule: The next grey vertex is the youngest remaining grey vertex.</li>
-          <li>Utilises a <Link href="/datastructures/stack"><a style={{ color: "#0000EE", textDecoration: "underline" }}>stack</a></Link> implementation to decide next node to visit.</li>
+          <li>
+            Utilises a{' '}
+            <Link href="/datastructures/stack">
+              <a style={{ color: '#0000EE', textDecoration: 'underline' }}>stack</a>
+            </Link>{' '}
+            implementation to decide next node to visit.
+          </li>
         </ul>
       </Heading>
       <Heading title="Pseudocode" />
-        <Heading subHeading title="DFS Pseudocode">
-          <Code text={dfsPseudocode} />
-        </Heading>
-        <Heading subHeading title="DFSVisit Iterative Pseudocode">
-          <Code text={dfsVisitIterativePseudocode} />
-        </Heading>
-        <Heading subHeading title="DFSVisit Recursive Pseudocode">
-          <Code text={dfsVisitRecursivePseudocode} />
-        </Heading>
-      <Heading title="Complexity" />
-      <StyledTable>
+      <Heading subHeading title="DFS Pseudocode">
+        <Code text={dfsPseudocode} />
+      </Heading>
+      <Heading subHeading title="DFSVisit Iterative Pseudocode">
+        <Code text={dfsVisitIterativePseudocode} />
+      </Heading>
+      <Heading subHeading title="DFSVisit Recursive Pseudocode">
+        <Code text={dfsVisitRecursivePseudocode} />
+      </Heading>
+      <Heading title="Complexity">
+        <StyledTable>
           <TableHead>
             <TableRow>
               <StyledCell>Graph Data Structure</StyledCell>
@@ -90,9 +95,10 @@ const DepthFirstSearch = () => {
             </TableRow>
           </TableBody>
         </StyledTable>
-      <Heading title="Types of Arcs" />
-      <Typography>Let (v, w) be an arc in a digraph traversed by DFS.</Typography>
-      <StyledTable>
+      </Heading>
+      <Heading title="Types of Arcs">
+        <Typography>Let (v, w) be an arc in a digraph traversed by DFS.</Typography>
+        <StyledTable>
           <TableHead>
             <TableRow>
               <StyledCell>Case</StyledCell>
@@ -102,28 +108,45 @@ const DepthFirstSearch = () => {
           <TableBody>
             <TableRow>
               <StyledCell>Tree Arc</StyledCell>
-              <StyledCell>seen[v] {"<"} seen[w] {"<"} done[w] {"<"} done[v]</StyledCell>
+              <StyledCell>
+                seen[v] {'<'} seen[w] {'<'} done[w] {'<'} done[v]
+              </StyledCell>
             </TableRow>
             <TableRow>
               <StyledCell>Forward Arc</StyledCell>
-              <StyledCell>seen[v] {"<"} seen[w] {"<"} done[w] {"<"} done[v]</StyledCell>
+              <StyledCell>
+                seen[v] {'<'} seen[w] {'<'} done[w] {'<'} done[v]
+              </StyledCell>
             </TableRow>
             <TableRow>
               <StyledCell>Back Arc</StyledCell>
-              <StyledCell>seen[w] {"<"} seen[v] {"<"} done[v] {"<"} done[w]</StyledCell>
+              <StyledCell>
+                seen[w] {'<'} seen[v] {'<'} done[v] {'<'} done[w]
+              </StyledCell>
             </TableRow>
             <TableRow>
               <StyledCell>Cross Arc</StyledCell>
-              <StyledCell>seen[w] {"<"} done[w] {"<"} seen[v] {"<"} done[v]</StyledCell>
+              <StyledCell>
+                seen[w] {'<'} done[w] {'<'} seen[v] {'<'} done[v]
+              </StyledCell>
             </TableRow>
           </TableBody>
         </StyledTable>
-        <Heading title="Determining Ancestors Using DFS" />
-        <Typography>Let v and w be nodes in a search forest F obtained by performing DFS. Additionally suppose that seen[v] {"<"} seen[w].</Typography>
+      </Heading>
+      <Heading title="Determining Ancestors Using DFS">
+        <Typography>
+          Let v and w be nodes in a search forest F obtained by performing DFS. Additionally suppose that seen[v] {'<'}{' '}
+          seen[w].
+        </Typography>
         <ul>
-          <li>If v is an ancestor of w in F: seen[v] {"<"} seen[w] {"<"} done[w] {"<"} done[v].</li>
-          <li>If v is not an ancestor of w in F: seen[v] {"<"} done[v] {"<"} seen[w] {"<"} done[w].</li>
+          <li>
+            If v is an ancestor of w in F: seen[v] {'<'} seen[w] {'<'} done[w] {'<'} done[v].
+          </li>
+          <li>
+            If v is not an ancestor of w in F: seen[v] {'<'} done[v] {'<'} seen[w] {'<'} done[w].
+          </li>
         </ul>
+      </Heading>
     </ContentLayout>
   );
 };
