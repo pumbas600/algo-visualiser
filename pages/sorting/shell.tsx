@@ -1,12 +1,12 @@
 import ContentLayout from '../../components/ContentLayout';
 import Heading from '../../components/ContentLayout/Heading';
 
-const Searching = () => {
+const Shell = () => {
   return (
     <ContentLayout>
-      <Heading title="Searching Algorithms" />
+      <Heading title="Shell Sort" />
     </ContentLayout>
   );
 };
 
-export default Searching;
+export default Shell;

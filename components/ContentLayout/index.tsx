@@ -19,7 +19,7 @@ const typographyStyle: CSSObject = {
 
 const ContentLayout = ({ children }: { children?: ReactNode }) => {
   const [currentId, setCurrentId] = useState('');
-  const { category } = useCategoryContext();
+  const { current: category } = useCategoryContext();
   const activeTypographyStyle = useMemo<CSSObject>(
     () => ({
       color: category.colour,
@@ -69,11 +69,9 @@ const ContentLayout = ({ children }: { children?: ReactNode }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [determineCurrentHeaderId]);
 
-  const scrollIntoView = useCallback(
-    (id: string) => {
-      document.getElementById(id)?.scrollIntoView();
-    }, [],
-  );
+  const scrollIntoView = useCallback((id: string) => {
+    document.getElementById(id)?.scrollIntoView();
+  }, []);
 
   const renderChildren = useCallback((): ReactNode => {
     const allIds: string[] = [];
@@ -112,9 +110,11 @@ const ContentLayout = ({ children }: { children?: ReactNode }) => {
   const renderContents = useCallback((): ReactNode => {
     const headings = getChildHeadings();
 
+    if (headings.length === 0) return null;
+
     return (
       <List
-        sx={{ position: 'fixed', top: '32px', right: '64px', width: '200px', display: { md: 'block', xs: 'none' } }}
+        sx={{ position: 'fixed', right: '64px', width: '200px', display: { md: 'block', xs: 'none' } }}
         subheader={
           <Typography fontFamily="monospace" fontWeight="bold" color={grey[500]} mb={1} pl={2}>
             CONTENTS

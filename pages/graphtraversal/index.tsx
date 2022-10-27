@@ -1,10 +1,11 @@
-import { Box } from '@mui/material';
+import ContentLayout from '../../components/ContentLayout';
+import Heading from '../../components/ContentLayout/Heading';
 
 const GraphTraversal = () => {
   return (
-    <Box ml="200px" color="white">
-      Hi!
-    </Box>
+    <ContentLayout>
+      <Heading title="Graph Traversal" />
+    </ContentLayout>
   );
 };
 

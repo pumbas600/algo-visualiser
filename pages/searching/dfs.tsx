@@ -1,12 +1,12 @@
 import ContentLayout from '../../components/ContentLayout';
 import Heading from '../../components/ContentLayout/Heading';
 
-const Searching = () => {
+const DepthFirstSearch = () => {
   return (
     <ContentLayout>
-      <Heading title="Searching Algorithms" />
+      <Heading title="Depth-first Search" />
     </ContentLayout>
   );
 };
 
-export default Searching;
+export default DepthFirstSearch;

@@ -2,11 +2,11 @@ import { createContext, useContext } from 'react';
 import { CategoryData, homeCategory } from '../../data/CategoryData';
 
 export interface CategoryContextState {
-  category: CategoryData;
+  current: CategoryData;
 }
 
 export const CategoryContext = createContext<CategoryContextState>({
-  category: homeCategory,
+  current: homeCategory,
 });
 
 const useCategoryContext = () => useContext(CategoryContext);

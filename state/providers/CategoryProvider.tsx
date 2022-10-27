@@ -24,7 +24,7 @@ const CategoryContextProvider = ({ children }: { children?: ReactNode }) => {
     }
   }, [router.pathname]);
 
-  return <CategoryContext.Provider value={{ category }}>{children}</CategoryContext.Provider>;
+  return <CategoryContext.Provider value={{ current: category }}>{children}</CategoryContext.Provider>;
 };
 
 export default CategoryContextProvider;

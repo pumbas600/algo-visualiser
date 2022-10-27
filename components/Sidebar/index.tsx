@@ -5,12 +5,14 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import MenuIcon from '@mui/icons-material/Menu';
 import { ReactNode, useCallback, useState } from 'react';
 import { Stack } from '@mui/material';
 import { useRouter } from 'next/router';
 import SidebarLink from './SidebarLink';
 import { matchesCategory } from '../../state/providers/CategoryProvider';
-import { sidebarCategories } from '../../data/CategoryData';
+import { categories } from '../../data/CategoryData';
+import useCategoryContext from '../../state/contexts/CategoryContext';
 
 const drawerWidth = 240;
 
@@ -41,6 +43,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   padding: theme.spacing(0, 1),
   // necessary for content to be below app bar
   ...theme.mixins.toolbar,
+  borderRightWidth: 0,
 }));
 
 const CustomDrawer = styled(Drawer, { shouldForwardProp: (prop) => prop !== 'open' })(({ theme, open }) => ({
@@ -61,6 +64,7 @@ const CustomDrawer = styled(Drawer, { shouldForwardProp: (prop) => prop !== 'ope
 export default function Sidebar({ children }: { children?: ReactNode }) {
   const theme = useTheme();
   const router = useRouter();
+  const category = useCategoryContext();
   const [isOpen, setIsOpen] = useState(false);
 
   const handleDrawerOpen = () => {
@@ -72,7 +76,7 @@ export default function Sidebar({ children }: { children?: ReactNode }) {
   };
 
   const renderLinks = useCallback((): ReactNode => {
-    return sidebarCategories.map((category) => {
+    return categories.map((category) => {
       const isActive = matchesCategory(router.pathname, category);
 
       return <SidebarLink key={category.href} category={category} isOpen={isOpen} isActive={isActive} />;
@@ -82,14 +86,14 @@ export default function Sidebar({ children }: { children?: ReactNode }) {
   return (
     <Box>
       <CustomDrawer variant="permanent" open={isOpen}>
-        <DrawerHeader sx={{ justifyContent: isOpen ? 'flex-end' : 'center' }}>
+        <DrawerHeader sx={{ justifyContent: isOpen ? 'flex-end' : 'center', bgcolor: category.current.colour }}>
           {isOpen ? (
-            <IconButton onClick={handleDrawerClose} title="Collapse sidebar">
+            <IconButton onClick={handleDrawerClose} title="Collapse sidebar" sx={{ color: 'white' }}>
               {theme.direction === 'rtl' ? <ChevronRightIcon fontSize="large" /> : <ChevronLeftIcon fontSize="large" />}
             </IconButton>
           ) : (
-            <IconButton onClick={handleDrawerOpen} title="Expand sidebar">
-              <ChevronRightIcon fontSize="large" />
+            <IconButton onClick={handleDrawerOpen} title="Expand sidebar" sx={{ color: 'white' }}>
+              <MenuIcon />
             </IconButton>
           )}
         </DrawerHeader>
@@ -98,7 +102,9 @@ export default function Sidebar({ children }: { children?: ReactNode }) {
           {renderLinks()}
         </Stack>
       </CustomDrawer>
-      <Box ml={8}>{children}</Box>
+      <Box ml={8} position="relative">
+        {children}
+      </Box>
     </Box>
   );
 }
