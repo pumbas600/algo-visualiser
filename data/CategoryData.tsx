@@ -104,23 +104,23 @@ export const sidebarCategories: CategoryData[] = [
     subCategories: [
       {
         title: 'Binary Search',
-        href: 'binarysearch',
+        href: '/binarysearch',
       },
       {
         title: 'Quick Select',
-        href: 'quickselect',
+        href: '/quickselect',
       },
       {
         title: 'Depth-first Search',
-        href: 'dfs',
+        href: '/dfs',
       },
       {
         title: 'Breadth-first Search',
-        href: 'bfs',
+        href: '/bfs',
       },
       {
         title: 'Priority-first Search',
-        href: 'pfs',
+        href: '/pfs',
       },
     ],
   },
@@ -132,23 +132,23 @@ export const sidebarCategories: CategoryData[] = [
     subCategories: [
       {
         title: 'Dijkstra',
-        href: 'dijkstra',
+        href: '/dijkstra',
       },
       {
         title: 'Bellman-Ford',
-        href: 'bellmanford',
+        href: '/bellmanford',
       },
       {
         title: "Prim's",
-        href: 'prim',
+        href: '/prim',
       },
       {
         title: "Kruskal's",
-        href: 'kruskal',
+        href: '/kruskal',
       },
       {
         title: "Floyd's",
-        href: 'floyd',
+        href: '/floyd',
       },
     ],
   },
