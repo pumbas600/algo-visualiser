@@ -3,11 +3,6 @@ import Link from 'next/link';
 import { ReactNode, useCallback, useMemo } from 'react';
 import useCategoryContext from '../../state/contexts/CategoryContext';
 
-interface HeaderProps {
-  currentPage: number;
-  buttonFunctions: any;
-}
-
 export default function Header() {
   const category = useCategoryContext();
 
