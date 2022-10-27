@@ -68,7 +68,7 @@ const Prim = () => {
       <Heading subHeading title="Priority-First Search Version">
         <Code text={priorityFirstPseudocode} />
       </Heading>
-      <Heading subHeading title="Running Time">
+      <Heading subHeading title="Complexity">
         <Typography>
           Runs in best case <b>O(e + nlog n)</b> time, where e is the number of edges and n is the number of nodes.
         </Typography>

@@ -66,12 +66,12 @@ const Dijkstra = () => {
       <Heading subHeading title="Psuedocode">
         <Code text={simplePsuedocode} />
       </Heading>
-      <Heading subHeading title="Running Time">
+      <Heading subHeading title="Complexity">
         <StyledTable>
           <TableHead>
             <TableRow>
               <StyledCell>Graph Data Structure</StyledCell>
-              <StyledCell>Running Time</StyledCell>
+              <StyledCell>Complexity</StyledCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -85,16 +85,16 @@ const Dijkstra = () => {
             </TableRow>
           </TableBody>
         </StyledTable>
-        <Typography>e is the number of edges, n is the number of nodes and a is a constant.</Typography>
+        <Typography>Where e is the number of edges, n is the number of nodes and a is a constant.</Typography>
       </Heading>
       <Heading title="Priority-First Search Version" />
       <Heading subHeading title="Psuedocode">
         <Code text={priorityFirstPseudocode} />
       </Heading>
-      <Heading subHeading title="Running Time">
+      <Heading subHeading title="Complexity">
         <Typography>
-          Using a <InlineLink href="/datastructures/heap">binary heap</InlineLink>: <b>O((n + e)log n)</b>, where e is
-          the number of edges and n is the number of nodes.
+          Using a <InlineLink href="/datastructures/heap">binary heap</InlineLink> it runs in <b>O((n + e)log n)</b>{' '}
+          time, where e is the number of edges and n is the number of nodes.
         </Typography>
       </Heading>
     </ContentLayout>

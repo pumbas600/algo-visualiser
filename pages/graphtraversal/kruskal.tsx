@@ -53,7 +53,7 @@ const Kruskal = () => {
         </Typography>
         <Code text={disjointSetsPseudocode} />
       </Heading>
-      <Heading subHeading title="Running Time">
+      <Heading subHeading title="Complexity">
         <Typography>
           Can be implemented to run in <b>O(elog n)</b> time, where e is the number of edges and n is the number of
           nodes.
