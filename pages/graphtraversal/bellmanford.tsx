@@ -1,6 +1,7 @@
 import { TableBody, TableHead, TableRow, Typography } from '@mui/material';
 import InlineLink from '../../components/A';
 import CodeBlock from '../../components/CodeBlock';
+import Code from '../../components/CodeBlock/Code';
 import ContentLayout from '../../components/ContentLayout';
 import Heading from '../../components/ContentLayout/Heading';
 import StyledTable, { StyledCell } from '../../components/StyledTable';
@@ -59,7 +60,7 @@ const BellmanFord = () => {
         </StyledTable>
         <Typography>
           Where e is the number of edges and n is the number of nodes. When implemented with an adjacency list, it runs
-          in <b>θ(ne)</b> time, because the two for loops can be replaced with <code>for (x, v) in E(G)</code>.
+          in <b>θ(ne)</b> time, because the two for loops can be replaced with <Code>for (x, v) in E(G)</Code>.
         </Typography>
       </Heading>
     </ContentLayout>
