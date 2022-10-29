@@ -73,17 +73,13 @@ const ContentLayout = ({ children }: { children?: ReactNode }) => {
   }, []);
 
   const renderChildren = useCallback((): ReactNode => {
-    const allIds: string[] = [];
-
-    const renderedChildren = Children.map(children, (c, index) => {
+    return Children.map(children, (c, index) => {
       if (isComponent(Heading, c) && !c.props.id) {
         const id = getId(c.props, index);
-        allIds.push(id);
         return cloneElement(c, { ...c.props, id });
       }
       return c;
     });
-    return renderedChildren;
   }, [children, getId]);
 
   const renderHeading = useCallback(
