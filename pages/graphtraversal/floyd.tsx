@@ -1,6 +1,6 @@
 import { Typography } from '@mui/material';
 import InlineLink from '../../components/A';
-import Code from '../../components/Code';
+import CodeBlock from '../../components/CodeBlock';
 import ContentLayout from '../../components/ContentLayout';
 import Heading from '../../components/ContentLayout/Heading';
 
@@ -33,7 +33,7 @@ const Floyd = () => {
         </ul>
       </Heading>
       <Heading title="Psuedocode">
-        <Code text={pseudocode} />
+        <CodeBlock text={pseudocode} />
         <Typography>
           This can be optimised by adding the checks: <code>if x == u: continue</code> and{' '}
           <code>if x == v: continue</code>.

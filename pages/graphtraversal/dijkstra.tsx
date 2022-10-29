@@ -1,6 +1,6 @@
 import { TableBody, TableHead, TableRow, Typography } from '@mui/material';
 import InlineLink from '../../components/A';
-import Code from '../../components/Code';
+import CodeBlock from '../../components/CodeBlock';
 import ContentLayout from '../../components/ContentLayout';
 import Heading from '../../components/ContentLayout/Heading';
 import StyledTable, { StyledCell } from '../../components/StyledTable';
@@ -64,7 +64,7 @@ const Dijkstra = () => {
       </Heading>
       <Heading title="Simple Version" />
       <Heading subHeading title="Psuedocode">
-        <Code text={simplePsuedocode} />
+        <CodeBlock text={simplePsuedocode} />
       </Heading>
       <Heading subHeading title="Complexity">
         <StyledTable>
@@ -89,7 +89,7 @@ const Dijkstra = () => {
       </Heading>
       <Heading title="Priority-First Search Version" />
       <Heading subHeading title="Psuedocode">
-        <Code text={priorityFirstPseudocode} />
+        <CodeBlock text={priorityFirstPseudocode} />
       </Heading>
       <Heading subHeading title="Complexity">
         <Typography>

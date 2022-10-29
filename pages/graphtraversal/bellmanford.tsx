@@ -1,6 +1,6 @@
 import { TableBody, TableHead, TableRow, Typography } from '@mui/material';
 import InlineLink from '../../components/A';
-import Code from '../../components/Code';
+import CodeBlock from '../../components/CodeBlock';
 import ContentLayout from '../../components/ContentLayout';
 import Heading from '../../components/ContentLayout/Heading';
 import StyledTable, { StyledCell } from '../../components/StyledTable';
@@ -36,7 +36,7 @@ const BellmanFord = () => {
         </ul>
       </Heading>
       <Heading title="Psuedocode">
-        <Code text={pseudocode} />
+        <CodeBlock text={pseudocode} />
       </Heading>
       <Heading subHeading title="Complexity">
         <StyledTable>

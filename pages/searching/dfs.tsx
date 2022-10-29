@@ -1,7 +1,7 @@
 import { TableBody, TableHead, TableRow, Typography } from '@mui/material';
 import ContentLayout from '../../components/ContentLayout';
 import Heading from '../../components/ContentLayout/Heading';
-import Code from '../../components/Code';
+import CodeBlock from '../../components/CodeBlock';
 import StyledTable, { StyledCell } from '../../components/StyledTable';
 import InlineLink from '../../components/A';
 
@@ -65,13 +65,13 @@ const DepthFirstSearch = () => {
       </Heading>
       <Heading title="Pseudocode" />
       <Heading subHeading title="DFS Pseudocode">
-        <Code text={dfsPseudocode} />
+        <CodeBlock text={dfsPseudocode} />
       </Heading>
       <Heading subHeading title="DFSVisit Iterative Pseudocode">
-        <Code text={dfsVisitIterativePseudocode} />
+        <CodeBlock text={dfsVisitIterativePseudocode} />
       </Heading>
       <Heading subHeading title="DFSVisit Recursive Pseudocode">
-        <Code text={dfsVisitRecursivePseudocode} />
+        <CodeBlock text={dfsVisitRecursivePseudocode} />
       </Heading>
       <Heading title="Complexity">
         <StyledTable>

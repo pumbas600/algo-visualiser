@@ -1,5 +1,5 @@
 import { Typography } from '@mui/material';
-import Code from '../../components/Code';
+import CodeBlock from '../../components/CodeBlock';
 import ContentLayout from '../../components/ContentLayout';
 import Heading from '../../components/ContentLayout/Heading';
 
@@ -63,10 +63,10 @@ const Prim = () => {
       </Heading>
       <Heading title="Pseudocode" />
       <Heading subHeading title="Simple Version">
-        <Code text={simplePsuedocode} />
+        <CodeBlock text={simplePsuedocode} />
       </Heading>
       <Heading subHeading title="Priority-First Search Version">
-        <Code text={priorityFirstPseudocode} />
+        <CodeBlock text={priorityFirstPseudocode} />
       </Heading>
       <Heading subHeading title="Complexity">
         <Typography>

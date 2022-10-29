@@ -1,5 +1,5 @@
 import { Typography } from '@mui/material';
-import Code from '../../components/Code';
+import CodeBlock from '../../components/CodeBlock';
 import ContentLayout from '../../components/ContentLayout';
 import Heading from '../../components/ContentLayout/Heading';
 
@@ -44,14 +44,14 @@ const Kruskal = () => {
       </Heading>
       <Heading title="Pseudocode" />
       <Heading subHeading title="Simple Version">
-        <Code text={simplePsuedocode} />
+        <CodeBlock text={simplePsuedocode} />
       </Heading>
       <Heading subHeading title="Disjoint Sets Version">
         <Typography>
           The disjoint sets data structure has the operations <code>find</code> and <code>union</code>. It can be
           implemented efficiently so that the main time taken is due to the sorting.
         </Typography>
-        <Code text={disjointSetsPseudocode} />
+        <CodeBlock text={disjointSetsPseudocode} />
       </Heading>
       <Heading subHeading title="Complexity">
         <Typography>
