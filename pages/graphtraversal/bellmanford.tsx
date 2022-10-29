@@ -1,5 +1,5 @@
 import { TableBody, TableHead, TableRow, Typography } from '@mui/material';
-import InlineLink from '../../components/A';
+import InlineLink from '../../components/InlineLink';
 import CodeBlock from '../../components/CodeBlock';
 import Code from '../../components/CodeBlock/Code';
 import ContentLayout from '../../components/ContentLayout';

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { ReactNode } from 'react';
-import useCategoryContext from '../../state/contexts/CategoryContext';
+import { Link as MuiLink } from '@mui/material';
 
 interface InlineLinkProps {
   href: string;
@@ -8,11 +8,9 @@ interface InlineLinkProps {
 }
 
 const InlineLink = ({ href, children }: InlineLinkProps) => {
-  const category = useCategoryContext();
-
   return (
     <Link href={href}>
-      <a style={{ color: category.current.colour, textDecoration: 'underline' }}>{children}</a>
+      <MuiLink>{children}</MuiLink>
     </Link>
   );
 };

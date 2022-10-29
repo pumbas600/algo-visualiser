@@ -3,7 +3,7 @@ import ContentLayout from '../../components/ContentLayout';
 import Heading from '../../components/ContentLayout/Heading';
 import CodeBlock from '../../components/CodeBlock';
 import StyledTable, { StyledCell } from '../../components/StyledTable';
-import InlineLink from '../../components/A';
+import InlineLink from '../../components/InlineLink';
 
 const dfsPseudocode = `def dfs(graph G, node s):
     stack S
